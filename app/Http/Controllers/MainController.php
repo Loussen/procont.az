@@ -7,7 +7,7 @@ use App\Models\Departments;
 use App\Models\Doctors;
 use App\Models\Faqs;
 use App\Models\Features;
-use App\Models\Hospitals;
+use App\Models\Products;
 use App\Models\Page;
 use App\Models\Services;
 use App\Models\Settings;
@@ -37,7 +37,7 @@ class MainController extends Controller
         $testimonials = Testimonials::all();
         $doctors = Doctors::limit(8)->get();
         $faqs = Faqs::all();
-        $hospitals = Hospitals::all();
+        $hospitals = Products::all();
 
         return view('pages.home',['sliders' => $sliders, 'aboutUs' => $aboutUs,'features' => $features, 'services' => $services,'departments' => $departments,'testimonials' => $testimonials,'doctors' => $doctors,'faqs' => $faqs, 'hospitals' => $hospitals]);
     }
@@ -59,7 +59,7 @@ class MainController extends Controller
 
     public function hospitals()
     {
-        $hospitals = Hospitals::paginate(6);
+        $hospitals = Products::paginate(6);
         return view('pages.hospitals', compact('hospitals'));
     }
 
@@ -83,7 +83,7 @@ class MainController extends Controller
 
     public function hospital($locale = null, $id)
     {
-        $hospital = Hospitals::find($id);
+        $hospital = Products::find($id);
 
         if(!$hospital) {
             abort(404);

@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\DepartmentsRequest;
+use App\Http\Requests\ProductsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Backpack\Pro\Http\Controllers\Operations\DropzoneOperation;
 
 /**
- * Class DepartmentsCrudController
+ * Class ProductsCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class DepartmentsCrudController extends CrudController
+class ProductsCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+
+    use DropzoneOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -26,9 +29,9 @@ class DepartmentsCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Departments::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/departments');
-        CRUD::setEntityNameStrings('departments', 'departments');
+        CRUD::setModel(\App\Models\Products::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/products');
+        CRUD::setEntityNameStrings('product', 'products');
     }
 
     /**
@@ -40,19 +43,13 @@ class DepartmentsCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('name');
-        CRUD::addColumn([
-            'name'        => 'hospital',
-            'type'        => 'select2',
-            'allows_null' => true,
-            'attribute'   => 'name',
-            'wrapper'     => ['class' => 'form-group col-md-6']
-        ]);
+        CRUD::column('short_description');
         CRUD::addColumn([
             'name' => 'image',
             'type' => 'image',
             'upload' => true,
-            'crop' => true,
             'prefix' => 'storage/',
+            'crop' => true,
             'wrapper' => ['class' => 'form-group col-md-6'],
         ]);
 
@@ -70,24 +67,25 @@ class DepartmentsCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(DepartmentsRequest::class);
-        CRUD::field('name');
+        CRUD::setValidation(ProductsRequest::class);
+        CRUD::field('name')->wrapper(['class' => 'form-group col-md-4']);
+        CRUD::field('short_description')->type('textarea')->wrapper(['class' => 'form-group col-md-8']);
+        CRUD::field('description')->type('tinymce');
         CRUD::addField([
             'name' => 'image',
             'type' => 'image',
             'upload' => true,
             'crop' => true,
             'wrapper' => ['class' => 'form-group col-md-6'],
-            'hint' => '300x260'
+            'hint' => '400x400'
         ]);
         CRUD::addField([
-            'name'        => 'hospital',
-            'type'        => 'select2',
-            'allows_null' => true,
-            'attribute'   => 'name',
-            'wrapper'     => ['class' => 'form-group col-md-6']
+            'name' => 'gallery',
+            'type' => 'dropzone',
+            'disk' => 'hospitals_gallery',
+            'withFiles'    => true,
         ]);
-        CRUD::field('description')->type('tinymce');
+
 
         /**
          * Fields can be defined using the fluent syntax:
@@ -104,5 +102,27 @@ class DepartmentsCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function autoSetupShowOperation()
+    {
+        CRUD::setValidation(ProductsRequest::class);
+        CRUD::column('name')->wrapper(['class' => 'form-group col-md-4']);
+        CRUD::column('short_description')->type('textarea')->wrapper(['class' => 'form-group col-md-8']);
+        CRUD::column('description')->type('tinymce');
+        CRUD::addColumn([
+            'name' => 'image',
+            'type' => 'image',
+            'upload' => true,
+            'crop' => true,
+            'wrapper' => ['class' => 'form-group col-md-6'],
+        ]);
+        CRUD::addColumn([
+            'name' => 'gallery',
+            'type' => 'dropzone',
+            'disk' => 'hospitals_gallery',
+            'withFiles'    => true,
+        ]);
+        CRUD::column('map')->type('textarea');
     }
 }

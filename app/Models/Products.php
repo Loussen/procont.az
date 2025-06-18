@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 
-class Hospitals extends Model
+class Products extends Model
 {
     use CrudTrait;
     use HasFactory;
@@ -22,7 +22,7 @@ class Hospitals extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'hospitals';
+    protected $table = 'products';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];

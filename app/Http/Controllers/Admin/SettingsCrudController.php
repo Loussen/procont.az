@@ -89,35 +89,6 @@ class SettingsCrudController extends CrudController
             'init_rows'     => 1,
         ]);
 
-        $subfieldsSiteServices[] = [
-            'name'        => 'title',
-            'wrapper'     => [
-                'class' => 'form-group col-md-4'
-            ],
-        ];
-        $subfieldsSiteServices[] = [
-            'name'        => 'description',
-            'type'        => 'textarea',
-            'wrapper'     => [
-                'class' => 'form-group col-md-4'
-            ],
-        ];
-        $subfieldsSiteServices[] = [
-            'name'        => 'icon',
-            'type'        => 'icon_picker',
-            'iconset'     => 'fontawesome',
-            'wrapper'     => [
-                'class' => 'form-group col-md-4'
-            ],
-        ];
-        CRUD::addField([
-            'name'          => 'site_services',
-            'type'          => "repeatable",
-            'subfields'     => $subfieldsSiteServices,
-            'max_rows'      => 4,
-            'min_rows'      => 1,
-            'init_rows'     => 1,
-        ]);
         CRUD::addField([
             'name' => 'gallery',
             'type' => 'dropzone',
