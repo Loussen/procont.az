@@ -36,6 +36,10 @@ function getRegistrar(): void
     });
 }
 
+Route::get('/', function (){
+    echo "Underconsturction";
+})->name('home');
+
 Route::group([
     'prefix' => '{locale?}',
     'where' => ['locale' => $locales],
