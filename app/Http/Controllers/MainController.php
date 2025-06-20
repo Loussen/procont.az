@@ -29,17 +29,7 @@ class MainController extends Controller
      */
     public function dashboard(Request $request)
     {
-        $sliders = Sliders::all();
-        $aboutUs = Page::where('slug','about-us')->first();
-        $features = Features::first();
-        $services = Services::all();
-        $departments = Departments::all();
-        $testimonials = Testimonials::all();
-        $doctors = Doctors::limit(8)->get();
-        $faqs = Faqs::all();
-        $hospitals = Products::all();
-
-        return view('pages.home',['sliders' => $sliders, 'aboutUs' => $aboutUs,'features' => $features, 'services' => $services,'departments' => $departments,'testimonials' => $testimonials,'doctors' => $doctors,'faqs' => $faqs, 'hospitals' => $hospitals]);
+        return view('pages.home');
     }
 
     public function page($locale = null, $slug = null)
@@ -57,10 +47,9 @@ class MainController extends Controller
         return view('pages.page', ['page' => $page]);
     }
 
-    public function hospitals()
+    public function products()
     {
-        $hospitals = Products::paginate(6);
-        return view('pages.hospitals', compact('hospitals'));
+        return view('pages.products');
     }
 
     public function services()
@@ -81,18 +70,9 @@ class MainController extends Controller
         return view('pages.doctors', compact('doctors'));
     }
 
-    public function hospital($locale = null, $id)
+    public function product($locale = null, $id)
     {
-        $hospital = Products::find($id);
-
-        if(!$hospital) {
-            abort(404);
-        }
-
-        $hospitalDoctors = Doctors::where('hospital_id',$hospital->id)->get();
-        $hospitalDepartments = Departments::where('hospital_id',$hospital->id)->get();
-
-        return view('pages.hospital', compact('hospital','hospitalDoctors','hospitalDepartments'));
+        return view('pages.product');
     }
 
     public function department($locale = null, $id)
@@ -178,10 +158,9 @@ class MainController extends Controller
         }
     }
 
-    public function videoGallery()
+    public function photoGallery()
     {
-        $videos = VideoGallery::paginate(8);
-        return view('pages.videos', compact('videos'));
+        return view('pages.photo-gallery');
     }
 
     public function blogs()

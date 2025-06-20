@@ -19,26 +19,16 @@ function getRegistrar(): void
     Route::controller(MainController::class)->group(function () {
         Route::get('/', 'dashboard')->name('home');
         Route::get('/products', 'products')->name('products');
-        Route::get('/services', 'services')->name('services');
-        Route::get('/departments', 'departments')->name('departments');
-        Route::get('/doctors', 'doctors')->name('doctors');
         Route::get('/contact', 'contact')->name('contact');
-        Route::get('/video-gallery', 'videoGallery')->name('video-gallery');
+        Route::get('/photo-gallery', 'photoGallery')->name('photo-gallery');
         Route::get('/blogs', 'blogs')->name('blogs');
 
         Route::get('/product/{id}', 'product')->name('product');
-        Route::get('/service/{id}', 'service')->name('service');
-        Route::get('/department/{id}', 'department')->name('department');
-        Route::get('/doctor/{id}', 'doctor')->name('doctor');
         Route::get('/blog/{id}', 'blog')->name('blog');
 
         Route::get('/page/{slug?}', 'page')->name('page');
     });
 }
-
-Route::get('/', function (){
-    echo "Underconsturction";
-})->name('home');
 
 Route::group([
     'prefix' => '{locale?}',

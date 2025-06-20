@@ -73,10 +73,10 @@ return [
     // ------
 
     // Developer or company name. Shown in footer.
-    'developer_name' => 'Fuad Hasanli',
+    'developer_name' => 'Metatron',
 
     // Developer website. Link in footer. Type false if you want to hide it.
-    'developer_link' => 'https://www.linkedin.com/in/fuad-hasanli/',
+    'developer_link' => 'https://rast.group/',
 
     // Show powered by Laravel Backpack in the footer? true/false
     'show_powered_by' => false,

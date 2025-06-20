@@ -3,107 +3,485 @@
 @section('title', 'Welcome to Clinics - Your Health is Our Priority')
 
 @section('content')
-    @include('includes.hero')
-    @include('includes.hospitals')
-    @include('includes.featured-services')
-    @include('includes.call-to-action')
-    @include('includes.about')
-    @include('includes.stats')
-    @include('includes.features')
-    @include('includes.services')
-    @include('includes.appointment')
-    @include('includes.departments')
-    @include('includes.testimonials')
-    @include('includes.doctors')
-    @include('includes.gallery')
-{{--    @include('includes.pricing')--}}
-    @include('includes.faq')
-    @include('includes.contact')
+
+    <!-- Inspiro Slider -->
+    <div id="slider" class="inspiro-slider slider-fullscreen dots-creative" data-height-xs="360">
+        <!-- Slide 1 -->
+        <div class="slide kenburns" data-bg-image="{{ asset('assets/images/1.jpg') }}">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="slide-captions text-center">
+                    <!-- Captions -->
+                    <h1 class="text-light">Pixel Perfection</h1>
+                    <h4 class="m-b-20 text-light">Set your goals high, and don't stop till you get there.</h4>
+                    <div><a href="#" class="btn btn-danger">Explore more</a></div>
+                    <!-- end: Captions -->
+                </div>
+
+            </div>
+        </div>
+        <!-- end: Slide 1 bu-->
+        <!-- Slide 2 -->
+        <div class="slide slide-dark kenburns" data-bg-image="{{ asset('assets/images/2.jpg') }}">
+            <div class="bg-overlay" data-style="1"></div>
+            <div class="container">
+                <div class="slide-captions text-dark text-center">
+                    <!-- Captions -->
+                    <h1>The World of POLO</h1>
+                    <h4 class="m-b-20">Set your goals high, and don't stop till you get there.</h4>
+                    <div><a href="#" class="btn btn-danger">Explore more</a></div>
+                    <!-- end: Captions -->
+                </div>
+            </div>
+        </div>
+        <!-- end: Slide 2 -->
+    </div>
+    <!--end: Inspiro Slider -->
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="heading-text heading-section">
+                        <h2>THE COMPANY</h2>
+
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-12">The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never
+                            been told!. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, <br> <br> facilisis ut venenatis eu, sodales vel dolor. The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida
+                            tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis
+                            eu, sodales vel dolor. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor. The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius
+                            consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor. Pellentesque ipsum erat, facilisis
+                            ut venenatis eu, sodales vel dolor. <br> <br>The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie
+                            ipsum volut.</div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="no-padding">
+        <div class="portfolio">
+            <!-- Portfolio Items -->
+            <div id="portfolio" class="grid-layout portfolio-4-columns" data-margin="0">
+
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="portfolio-page-grid-gallery.html">
+                                <h3>Let's Go Outside</h3>
+                                <span>Illustrations / Graphics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: portfolio item -->
+
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="portfolio-page-grid-gallery.html">
+                                <h3>Let's Go Outside</h3>
+                                <span>Illustrations / Graphics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: portfolio item -->
+
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="portfolio-page-grid-gallery.html">
+                                <h3>Let's Go Outside</h3>
+                                <span>Illustrations / Graphics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: portfolio item -->
+
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="portfolio-page-grid-gallery.html">
+                                <h3>Let's Go Outside</h3>
+                                <span>Illustrations / Graphics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: portfolio item -->
+
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="portfolio-page-grid-gallery.html">
+                                <h3>Let's Go Outside</h3>
+                                <span>Illustrations / Graphics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: portfolio item -->
+
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="portfolio-page-grid-gallery.html">
+                                <h3>Let's Go Outside</h3>
+                                <span>Illustrations / Graphics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: portfolio item -->
+
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="portfolio-page-grid-gallery.html">
+                                <h3>Let's Go Outside</h3>
+                                <span>Illustrations / Graphics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: portfolio item -->
+
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="portfolio-page-grid-gallery.html">
+                                <h3>Let's Go Outside</h3>
+                                <span>Illustrations / Graphics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: portfolio item -->
+            </div>
+            <!-- end: Portfolio Items -->
+
+        </div>
+    </section>
+
+    <section class="background-grey p-t-100">
+        <div class="container xs-text-center sm-text-center">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="text-center">
+                        <div class="counter text-lg"> <span data-speed="3000" data-refresh-interval="50" data-to="12416" data-from="600" data-seperator="true"></span> </div>
+                        <div class="seperator seperator-small"></div>
+                        <p>LINES OF CODE</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="text-center">
+                        <div class="counter text-lg"> <span data-speed="4500" data-refresh-interval="23" data-to="365" data-from="100" data-seperator="true"></span> </div>
+                        <div class="seperator seperator-small"></div>
+                        <p>CUPS OF COFFEE</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="text-center">
+                        <div class="counter text-lg"> <span data-speed="3000" data-refresh-interval="12" data-to="114" data-from="50" data-seperator="true"></span> </div>
+                        <div class="seperator seperator-small"></div>
+                        <p>FINISHED PROJECTS</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="text-center">
+                        <div class="counter text-lg"> <span data-speed="4550" data-refresh-interval="50" data-to="14825" data-from="48" data-seperator="true"></span> </div>
+                        <div class="seperator seperator-small"></div>
+                        <p>SATISFIED CLIENTS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="box-fancy section-fullwidth text-light p-b-0 p-t-0">
+        <div class="row">
+            <div style="background-color: rgb(241, 183, 50);" class="col-lg-4">
+                <h1 class="text-lg text-uppercase">01.</h1>
+                <h3>CONCEPT</h3>
+                <span>The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. </span>
+            </div>
+
+            <div style="background-color: rgb(252, 196, 63);" class="col-lg-4">
+                <h1 class="text-lg text-uppercase">02.</h1>
+                <h3>DEVELOPMENT</h3>
+                <span>The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. </span>
+            </div>
+
+            <div style="background-color: rgb(253, 206, 73);" class="col-lg-4">
+                <h1 class="text-lg text-uppercase">03.</h1>
+                <h3>TESTING</h3>
+                <span>The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. </span>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center">
+        <div class="container">
+            <div class="carousel client-logos" data-items="6" data-items-sm="4" data-items-xs="3" data-items-xxs="2" data-margin="20" data-arrows="false" data-autoplay="true" data-autoplay="3000" data-loop="true">
+                <div>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/1.png') }}"> </a>
+                </div>
+                <div>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/2.png') }}"> </a>
+                </div>
+                <div>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/3.png') }}"> </a>
+                </div>
+                <div>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/4.png') }}"> </a>
+                </div>
+                <div>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/5.png') }}"> </a>
+                </div>
+                <div>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/6.png') }}"> </a>
+                </div>
+                <div>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/7.png') }}"> </a>
+                </div>
+                <div>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/8.png') }}"> </a>
+                </div>
+                <div>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/9.png') }}"> </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-gallery" class="no-padding" style="background-color:#454A43;">
+
+        <!-- Portfolio -->
+        <div id="portfolio" class="grid-layout portfolio-4-columns" data-margin="0" data-lightbox="gallery">
+            <!-- portfolio item -->
+            <div class="portfolio-item img-zoom">
+                <div class="portfolio-item-wrap">
+                    <div class="portfolio-image">
+                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="portfolio-description">
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end: portfolio item -->
+            <!-- portfolio item -->
+            <div class="portfolio-item img-zoom">
+                <div class="portfolio-item-wrap">
+                    <div class="portfolio-image">
+                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="portfolio-description">
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end: portfolio item -->
+            <!-- portfolio item -->
+            <div class="portfolio-item img-zoom">
+                <div class="portfolio-item-wrap">
+                    <div class="portfolio-image">
+                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="portfolio-description">
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end: portfolio item -->
+            <!-- portfolio item -->
+            <div class="portfolio-item img-zoom">
+                <div class="portfolio-item-wrap">
+                    <div class="portfolio-image">
+                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="portfolio-description">
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end: portfolio item -->
+            <!-- portfolio item -->
+            <div class="portfolio-item img-zoom">
+                <div class="portfolio-item-wrap">
+                    <div class="portfolio-image">
+                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="portfolio-description">
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end: portfolio item -->
+            <!-- portfolio item -->
+            <div class="portfolio-item img-zoom">
+                <div class="portfolio-item-wrap">
+                    <div class="portfolio-image">
+                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="portfolio-description">
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end: portfolio item -->
+            <!-- portfolio item -->
+            <div class="portfolio-item img-zoom">
+                <div class="portfolio-item-wrap">
+                    <div class="portfolio-image">
+                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="portfolio-description">
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end: portfolio item -->
+        </div>
+        <!-- end: Portfolio -->
+
+        <!-- Load next portfolio items -->
+        <div id="pagination" class="infinite-scroll">
+            <a href="home-portfolio-v10-infinite-scroll-2.html"></a>
+        </div>
+        <!-- end:Load next portfolio items -->
+
+    </section>
+
+    <section id="section4">
+        <div class="container">
+            <div class="heading-text heading-section text-center m-b-40">
+                <h2 class="m-b-0">OUR BLOG</h2>
+                <span class="lead">We do blogging sometimes!</span>
+            </div>
+            <div id="blog">
+
+                <!-- Blog post-->
+                <div id="blog" class="grid-layout post-3-columns m-b-30" data-item="post-item">
+
+                    <!-- Post item-->
+                    <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                <a href="#">
+                                    <img alt="" src="{{ asset('assets/images/blog/12.jpg') }}">
+                                </a>
+                                <span class="post-meta-category"><a href="">Lifestyle</a></span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
+                                <h2><a href="#">Standard post with a single image
+                                    </a></h2>
+                                <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
+
+                                <a href="#" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+
+                    <!-- Post item-->
+                    <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                <a href="#">
+                                    <img alt="" src="{{ asset('assets/images/blog/17.jpg') }}">
+                                </a>
+                                <span class="post-meta-category"><a href="">Science</a></span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
+
+                                <h2><a href="#">Standard post with a single image
+                                    </a></h2>
+                                <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
+
+                                <a href="#" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+
+
+                    <!-- Post item-->
+                    <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                <a href="#">
+                                    <img alt="" src="{{ asset('assets/images/blog/18.jpg') }}">
+                                </a>
+                                <span class="post-meta-category"><a href="">Science</a></span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
+
+                                <h2><a href="#">Standard post with a single image
+                                    </a></h2>
+                                <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
+
+                                <a href="#" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+                </div>
+                <!-- end: Blog post-->
+            </div>
+        </div>
+    </section>
+
 @endsection
 
-@push('styles')
-    <style>
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('assets/img/hero-bg.jpg') }}');
-            background-size: cover;
-            background-position: center;
-            padding: 150px 0;
-            color: white;
-            text-align: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        .feature-box {
-            text-align: center;
-            padding: 30px;
-            margin: 20px 0;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            border-radius: 5px;
-        }
-
-        .feature-box i {
-            font-size: 40px;
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-
-        .service-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .service-card h3 {
-            padding: 20px;
-            margin: 0;
-        }
-
-        .service-card p {
-            padding: 0 20px;
-        }
-
-        .service-card .read-more {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 20px;
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .appointment-section {
-            background: #f8f9fa;
-            padding: 80px 0;
-        }
-
-        .working-hours {
-            background: white;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-
-        .working-hours ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .working-hours li {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-    </style>
+@push('scripts')
+    <script src="{{ asset('assets/js/infinite-scroll.min.js') }}"></script>
 @endpush
