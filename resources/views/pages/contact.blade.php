@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Page title -->
-    <section id="page-title" data-bg-parallax="{{ asset('assets/images/parallax-1.jpg') }}">
+    <section id="page-title" data-bg-parallax="{{ asset('assets/images/slider_1.jpg') }}">
         <div class="container">
             <div class="page-title">
                 <h1>Contact Us</h1>

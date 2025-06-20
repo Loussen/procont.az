@@ -7,7 +7,7 @@
     <!-- Inspiro Slider -->
     <div id="slider" class="inspiro-slider slider-fullscreen dots-creative" data-height-xs="360">
         <!-- Slide 1 -->
-        <div class="slide kenburns" data-bg-image="{{ asset('assets/images/1.jpg') }}">
+        <div class="slide kenburns" data-bg-image="{{ asset('assets/images/slider_1.jpg') }}">
             <div class="bg-overlay"></div>
             <div class="container">
                 <div class="slide-captions text-center">
@@ -22,7 +22,7 @@
         </div>
         <!-- end: Slide 1 bu-->
         <!-- Slide 2 -->
-        <div class="slide slide-dark kenburns" data-bg-image="{{ asset('assets/images/2.jpg') }}">
+        <div class="slide slide-dark kenburns" data-bg-image="{{ asset('assets/images/slider_2.jpg') }}">
             <div class="bg-overlay" data-style="1"></div>
             <div class="container">
                 <div class="slide-captions text-dark text-center">
@@ -73,7 +73,7 @@
                 <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
                     <div class="portfolio-item-wrap">
                         <div class="portfolio-image">
-                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                         </div>
                         <div class="portfolio-description">
                             <a href="portfolio-page-grid-gallery.html">
@@ -89,7 +89,7 @@
                 <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
                     <div class="portfolio-item-wrap">
                         <div class="portfolio-image">
-                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                         </div>
                         <div class="portfolio-description">
                             <a href="portfolio-page-grid-gallery.html">
@@ -105,7 +105,7 @@
                 <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
                     <div class="portfolio-item-wrap">
                         <div class="portfolio-image">
-                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                         </div>
                         <div class="portfolio-description">
                             <a href="portfolio-page-grid-gallery.html">
@@ -121,7 +121,7 @@
                 <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
                     <div class="portfolio-item-wrap">
                         <div class="portfolio-image">
-                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                         </div>
                         <div class="portfolio-description">
                             <a href="portfolio-page-grid-gallery.html">
@@ -137,7 +137,7 @@
                 <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
                     <div class="portfolio-item-wrap">
                         <div class="portfolio-image">
-                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                         </div>
                         <div class="portfolio-description">
                             <a href="portfolio-page-grid-gallery.html">
@@ -153,7 +153,7 @@
                 <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
                     <div class="portfolio-item-wrap">
                         <div class="portfolio-image">
-                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                         </div>
                         <div class="portfolio-description">
                             <a href="portfolio-page-grid-gallery.html">
@@ -169,7 +169,7 @@
                 <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
                     <div class="portfolio-item-wrap">
                         <div class="portfolio-image">
-                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                         </div>
                         <div class="portfolio-description">
                             <a href="portfolio-page-grid-gallery.html">
@@ -185,7 +185,7 @@
                 <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
                     <div class="portfolio-item-wrap">
                         <div class="portfolio-image">
-                            <a href="#"><img src="{{ asset('assets/images/portfolio/61.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                         </div>
                         <div class="portfolio-description">
                             <a href="portfolio-page-grid-gallery.html">
@@ -263,31 +263,31 @@
         <div class="container">
             <div class="carousel client-logos" data-items="6" data-items-sm="4" data-items-xs="3" data-items-xxs="2" data-margin="20" data-arrows="false" data-autoplay="true" data-autoplay="3000" data-loop="true">
                 <div>
-                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/1.png') }}"> </a>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/client.png') }}"> </a>
                 </div>
                 <div>
-                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/2.png') }}"> </a>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/client.png') }}"> </a>
                 </div>
                 <div>
-                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/3.png') }}"> </a>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/client.png') }}"> </a>
                 </div>
                 <div>
-                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/4.png') }}"> </a>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/client.png') }}"> </a>
                 </div>
                 <div>
-                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/5.png') }}"> </a>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/client.png') }}"> </a>
                 </div>
                 <div>
-                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/6.png') }}"> </a>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/client.png') }}"> </a>
                 </div>
                 <div>
-                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/7.png') }}"> </a>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/client.png') }}"> </a>
                 </div>
                 <div>
-                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/8.png') }}"> </a>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/client.png') }}"> </a>
                 </div>
                 <div>
-                    <a href="#"><img alt="" src="{{ asset('assets/images/clients/9.png') }}"> </a>
+                    <a href="#"><img alt="" src="{{ asset('assets/images/client.png') }}"> </a>
                 </div>
             </div>
         </div>
@@ -301,10 +301,10 @@
             <div class="portfolio-item img-zoom">
                 <div class="portfolio-item-wrap">
                     <div class="portfolio-image">
-                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                     </div>
                     <div class="portfolio-description">
-                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/portfolio.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                     </div>
                 </div>
             </div>
@@ -313,10 +313,10 @@
             <div class="portfolio-item img-zoom">
                 <div class="portfolio-item-wrap">
                     <div class="portfolio-image">
-                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                     </div>
                     <div class="portfolio-description">
-                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/portfolio.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                     </div>
                 </div>
             </div>
@@ -325,10 +325,10 @@
             <div class="portfolio-item img-zoom">
                 <div class="portfolio-item-wrap">
                     <div class="portfolio-image">
-                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                     </div>
                     <div class="portfolio-description">
-                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/portfolio.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                     </div>
                 </div>
             </div>
@@ -337,10 +337,10 @@
             <div class="portfolio-item img-zoom">
                 <div class="portfolio-item-wrap">
                     <div class="portfolio-image">
-                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                     </div>
                     <div class="portfolio-description">
-                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/portfolio.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                     </div>
                 </div>
             </div>
@@ -349,10 +349,10 @@
             <div class="portfolio-item img-zoom">
                 <div class="portfolio-item-wrap">
                     <div class="portfolio-image">
-                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                     </div>
                     <div class="portfolio-description">
-                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/portfolio.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                     </div>
                 </div>
             </div>
@@ -361,10 +361,10 @@
             <div class="portfolio-item img-zoom">
                 <div class="portfolio-item-wrap">
                     <div class="portfolio-image">
-                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                     </div>
                     <div class="portfolio-description">
-                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/portfolio.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                     </div>
                 </div>
             </div>
@@ -373,10 +373,10 @@
             <div class="portfolio-item img-zoom">
                 <div class="portfolio-item-wrap">
                     <div class="portfolio-image">
-                        <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('assets/images/portfolio.jpg') }}" alt=""></a>
                     </div>
                     <div class="portfolio-description">
-                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                        <a title="Paper Pouch!" data-lightbox="gallery-image" href="{{ asset('assets/images/portfolio.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                     </div>
                 </div>
             </div>
@@ -408,7 +408,7 @@
                         <div class="post-item-wrap">
                             <div class="post-image">
                                 <a href="#">
-                                    <img alt="" src="{{ asset('assets/images/blog/12.jpg') }}">
+                                    <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
                                 </a>
                                 <span class="post-meta-category"><a href="">Lifestyle</a></span>
                             </div>
@@ -431,7 +431,7 @@
                         <div class="post-item-wrap">
                             <div class="post-image">
                                 <a href="#">
-                                    <img alt="" src="{{ asset('assets/images/blog/17.jpg') }}">
+                                    <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
                                 </a>
                                 <span class="post-meta-category"><a href="">Science</a></span>
                             </div>
@@ -456,7 +456,7 @@
                         <div class="post-item-wrap">
                             <div class="post-image">
                                 <a href="#">
-                                    <img alt="" src="{{ asset('assets/images/blog/18.jpg') }}">
+                                    <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
                                 </a>
                                 <span class="post-meta-category"><a href="">Science</a></span>
                             </div>

@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Page title -->
-    <section id="page-title" data-bg-parallax="{{ asset('assets/images/parallax-1.jpg') }}">
+    <section id="page-title" data-bg-parallax="{{ asset('assets/images/slider_1.jpg') }}">
         <div class="container">
             <div class="page-title">
                 <h1>Contact Us</h1>
@@ -47,7 +47,7 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a href="#">
-                                <img alt="" src="{{ asset('assets/images/2.jpg') }}">
+                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
                             </a>
                             <span class="post-meta-category"><a href="">Lifestyle</a></span>
                         </div>
@@ -66,7 +66,7 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a href="#">
-                                <img alt="" src="{{ asset('assets/images/2.jpg') }}">
+                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
                             </a>
                             <span class="post-meta-category"><a href="">Lifestyle</a></span>
                         </div>
@@ -85,7 +85,7 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a href="#">
-                                <img alt="" src="{{ asset('assets/images/2.jpg') }}">
+                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
                             </a>
                             <span class="post-meta-category"><a href="">Lifestyle</a></span>
                         </div>
@@ -104,7 +104,7 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a href="#">
-                                <img alt="" src="{{ asset('assets/images/2.jpg') }}">
+                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
                             </a>
                             <span class="post-meta-category"><a href="">Lifestyle</a></span>
                         </div>
@@ -123,7 +123,7 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a href="#">
-                                <img alt="" src="{{ asset('assets/images/2.jpg') }}">
+                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
                             </a>
                             <span class="post-meta-category"><a href="">Lifestyle</a></span>
                         </div>
@@ -142,7 +142,7 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a href="#">
-                                <img alt="" src="{{ asset('assets/images/2.jpg') }}">
+                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
                             </a>
                             <span class="post-meta-category"><a href="">Lifestyle</a></span>
                         </div>

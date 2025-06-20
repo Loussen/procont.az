@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Page title -->
-    <section id="page-title" data-bg-parallax="{{ asset('assets/images/parallax-1.jpg') }}">
+    <section id="page-title" data-bg-parallax="{{ asset('assets/images/slider_1.jpg') }}">
         <div class="container">
             <div class="page-title">
                 <h1>Gallery Wide</h1>
@@ -29,28 +29,28 @@
             <!-- Gallery -->
             <div class="grid-layout grid-5-columns" data-margin="20" data-item="grid-item" data-lightbox="gallery">
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/2.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/2.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/2.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/2.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/2.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/2.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/2.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/2.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/2.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/2.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/2.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/2.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/2.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/2.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/2.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/2.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
                 </div>
             </div>
             <!-- end: Gallery -->

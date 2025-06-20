@@ -1,4 +1,4 @@
-<header id="header" data-transparent="true" class="{{ in_array(Route::currentRouteName(),['products','product','blogs']) ? '' : 'dark' }}">
+<header id="header" data-transparent="true" class="{{ in_array(Route::currentRouteName(),['products','product']) ? '' : 'dark' }}">
     <div class="header-inner">
         <div class="container">
             <!--Logo-->

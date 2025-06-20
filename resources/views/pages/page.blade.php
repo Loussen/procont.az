@@ -6,7 +6,7 @@
     <!-- Inspiro Slider -->
     <div id="slider" class="inspiro-slider dots-creative" data-height-xs="360">
         <!-- Slide 2 -->
-        <div class="slide kenburns" style="background-image:url('{{ asset('assets/images/parallax-1.jpg') }}');">
+        <div class="slide kenburns" style="background-image:url('{{ asset('assets/images/slider_1.jpg') }}');">
             <div class="bg-overlay"></div>
             <div class="container">
                 <div class="slide-captions text-center text-light">

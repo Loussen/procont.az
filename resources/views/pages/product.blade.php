@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Page title -->
-    <section id="page-title" class="background-image" style="background-image:url({{ asset('assets/images/2.jpg') }});">
+    <section id="page-title" class="background-image" style="background-image:url({{ asset('assets/images/slider_2.jpg') }});">
         <div class="container">
             <div class="page-title">
                 <div data-animate="fadeIn" class="text-light">
@@ -31,30 +31,30 @@
                                 <div class="portfolio-item img-zoom">
                                     <div class="portfolio-item-wrap">
                                         <div class="portfolio-image">
-                                            <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('assets/images/slider_2.jpg') }}" alt=""></a>
                                         </div>
                                         <div class="portfolio-description">
-                                            <a title="Paper Pouch!" data-lightbox="image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                                            <a title="Paper Pouch!" data-lightbox="image" href="{{ asset('assets/images/slider_2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="portfolio-item img-zoom">
                                     <div class="portfolio-item-wrap">
                                         <div class="portfolio-image">
-                                            <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('assets/images/slider_2.jpg') }}" alt=""></a>
                                         </div>
                                         <div class="portfolio-description">
-                                            <a title="Paper Pouch!" data-lightbox="image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                                            <a title="Paper Pouch!" data-lightbox="image" href="{{ asset('assets/images/slider_2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="portfolio-item img-zoom">
                                     <div class="portfolio-item-wrap">
                                         <div class="portfolio-image">
-                                            <a href="#"><img src="{{ asset('assets/images/2.jpg') }}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('assets/images/slider_2.jpg') }}" alt=""></a>
                                         </div>
                                         <div class="portfolio-description">
-                                            <a title="Paper Pouch!" data-lightbox="image" href="{{ asset('assets/images/2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
+                                            <a title="Paper Pouch!" data-lightbox="image" href="{{ asset('assets/images/slider_2.jpg') }}" class="btn btn-light btn-roundeded">Zoom</a>
                                         </div>
                                     </div>
                                 </div>
