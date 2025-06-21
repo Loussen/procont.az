@@ -29,32 +29,38 @@
             <!-- Gallery -->
             <div class="grid-layout grid-5-columns" data-margin="20" data-item="grid-item" data-lightbox="gallery">
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/1.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/1.jpg"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/2.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/2.jpg"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/3.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/3.jpg"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/4.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/4.jpg"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/5.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/5.jpg"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/6.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/6.jpg"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/7.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/7.jpg"></a>
                 </div>
                 <div class="grid-item">
-                    <a class="image-hover-zoom" href="{{ asset('assets/images/gallery.jpg') }}" data-lightbox="gallery-image"><img src="{{ asset('assets/images/gallery.jpg') }}"></a>
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/8.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/8.jpg"></a>
+                </div>
+                <div class="grid-item">
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/9.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/9.jpg"></a>
+                </div>
+                <div class="grid-item">
+                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/10.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/10.jpg"></a>
                 </div>
             </div>
             <!-- end: Gallery -->
         </div>
-    </section>
+    </section> <!-- end: Content -->
     <!-- end: Content -->
 @endsection

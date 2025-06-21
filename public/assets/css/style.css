@@ -6744,3 +6744,5 @@ body[data-bg-image] { background-attachment: fixed; background-position: top cen
 .card .card-body .wizard { padding: 1rem; }
 
 section { padding: 80px 0; position: relative; width: 100%; overflow: hidden; z-index: 1; background-color: #fff;}
+
+.grid-item>img,.grid-item>a>img{width:100%;height:auto}
