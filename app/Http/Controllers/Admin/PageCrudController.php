@@ -26,18 +26,18 @@ class PageCrudController extends CrudController
     {
         $this->crud->setModel(Page::class);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
-        $this->crud->setEntityNameStrings(trans('backpack::pagemanager.page'), trans('backpack::pagemanager.pages'));
+        $this->crud->setEntityNameStrings('səhifə', 'səhifələr');
     }
 
     protected function setupListOperation()
     {
         $this->crud->addColumn([
             'name' => 'name',
-            'label' => trans('backpack::pagemanager.name'),
+            'label' => 'Ad',
         ]);
         $this->crud->addColumn([
             'name' => 'template',
-            'label' => trans('backpack::pagemanager.template'),
+            'label' => 'Şablon',
             'type' => 'model_function',
             'function_name' => 'getTemplateName',
         ]);
@@ -88,7 +88,7 @@ class PageCrudController extends CrudController
     {
         $this->crud->addField([
             'name' => 'template',
-            'label' => trans('backpack::pagemanager.template'),
+            'label' => 'Şablon',
             'type' => 'select_page_template',
             'view_namespace' => file_exists(resource_path('views/vendor/backpack/crud/fields/select_page_template.blade.php')) ? null : 'pagemanager::fields',
             'options' => $this->getTemplatesArray(),
@@ -100,7 +100,7 @@ class PageCrudController extends CrudController
         ]);
         $this->crud->addField([
             'name' => 'name',
-            'label' => trans('backpack::pagemanager.page_name'),
+            'label' => 'Ad',
             'type' => 'text',
             'wrapperAttributes' => [
                 'class' => 'form-group col-md-6',
@@ -109,13 +109,13 @@ class PageCrudController extends CrudController
         ]);
         $this->crud->addField([
             'name' => 'title',
-            'label' => trans('backpack::pagemanager.page_title'),
+            'label' => 'Başlıq',
             'type' => 'text',
             // 'disabled' => 'disabled'
         ]);
         $this->crud->addField([
             'name' => 'slug',
-            'label' => trans('backpack::pagemanager.page_slug'),
+            'label' => 'Səhifə slug (URL)',
             'type' => 'text',
             'hint' => trans('backpack::pagemanager.page_slug_hint'),
             // 'disabled' => 'disabled'

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 
-class Products extends Model
+class Blog extends Model
 {
     use CrudTrait;
     use HasFactory;
@@ -23,7 +23,7 @@ class Products extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'products';
+    protected $table = 'blogs';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -34,7 +34,7 @@ class Products extends Model
     private string $thumbImage = 'thumb_image';
     private string $disk = 'public';
 
-    public $translatable = ['name','short_description','description'];
+    public $translatable = ['title','short_description','description'];
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ class Products extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo('App\Models\Category', 'category_id', 'id')
-            ->where('type', 'product');
+            ->where('type', 'blog');
     }
 
     /*
@@ -79,7 +79,7 @@ class Products extends Model
         // or use your own disk, defined in config/filesystems.php
         $disk = $this->disk;
         // destination path relative to the disk above
-        $destination_path = "uploads/images/products/images";
+        $destination_path = "uploads/images/blogs/images";
 
         // if the image was erased
         if (empty($value)) {
@@ -105,7 +105,7 @@ class Products extends Model
             // 1. Generate a filename.
             $filename = md5($value.time()).'.png';
 
-            $thumbnail = Image::make($value)->fit(600, 400)->encode('jpg', 90);
+            $thumbnail = Image::make($value)->fit(525, 350)->encode('jpg', 90);
             $thumb_filename = md5($value . time()) . '_thumb.png';
 
             // 2. Store the image on disk.

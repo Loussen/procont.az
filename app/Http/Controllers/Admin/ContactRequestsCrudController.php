@@ -28,7 +28,7 @@ class ContactRequestsCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ContactRequests::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-requests');
-        CRUD::setEntityNameStrings('contact requests', 'contact requests');
+        CRUD::setEntityNameStrings('əlaqə mesajları', 'əlaqə mesajları');
     }
 
     /**

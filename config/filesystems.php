@@ -60,10 +60,10 @@ return [
             'report' => false,
         ],
 
-        'hospitals_gallery' => [
+        'products_gallery' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/uploads/images/hospitals/gallery'),
-            'url' => env('APP_URL').'/storage/uploads/images/hospitals/gallery',
+            'root' => storage_path('app/public/uploads/images/products/gallery'),
+            'url' => env('APP_URL').'/storage/uploads/images/products/gallery',
             'visibility' => 'public',
         ],
 

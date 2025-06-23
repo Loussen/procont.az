@@ -28,7 +28,7 @@ class SlidersCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Sliders::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/sliders');
-        CRUD::setEntityNameStrings('sliders', 'sliders');
+        CRUD::setEntityNameStrings('slayder', 'slayderlər');
     }
 
     /**
@@ -39,12 +39,13 @@ class SlidersCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('title')->wrapper(['class' => 'form-group col-md-6']);
+        CRUD::column('title')->label('Başlıq')->wrapper(['class' => 'form-group col-md-6']);
         CRUD::column('url')->wrapper(['class' => 'form-group col-md-6']);
-        CRUD::column('description');
+        CRUD::column('description')->label('Mətn');
 
         CRUD::addColumn([
             'name' => 'image',
+            'label' => 'Şəkil',
             'type' => 'image',
             'upload' => true,
             'crop' => true,
@@ -68,16 +69,18 @@ class SlidersCrudController extends CrudController
     {
         CRUD::setValidation(SlidersRequest::class);
 
-        CRUD::field('title')->wrapper(['class' => 'form-group col-md-6']);
+        CRUD::field('title')->label('Başlıq')->wrapper(['class' => 'form-group col-md-6']);
         CRUD::field('url')->wrapper(['class' => 'form-group col-md-6']);
-        CRUD::field('description');
+        CRUD::field('description')->label('Mətn');
 
         CRUD::addField([
             'name' => 'image',
+            'label' => 'Şəkil',
             'type' => 'image',
             'upload' => true,
             'crop' => true,
             'wrapper' => ['class' => 'form-group col-md-6'],
+            'hint' => '1280x720'
         ]);
 
         /**

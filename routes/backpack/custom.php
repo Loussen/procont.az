@@ -19,12 +19,12 @@ Route::group([
     Route::crud('products', 'ProductsCrudController');
     Route::crud('faqs', 'FaqsCrudController');
     Route::crud('page', 'PageCrudController');
-    Route::crud('services', 'ServicesCrudController');
     Route::crud('settings', 'SettingsCrudController');
     Route::crud('menu-item', 'MenuItemCrudController');
     Route::crud('sliders', 'SlidersCrudController');
     Route::crud('contact-requests', 'ContactRequestsCrudController');
-    Route::crud('video-gallery', 'VideoGalleryCrudController');
+    Route::crud('blog', 'BlogCrudController');
+    Route::crud('category', 'CategoryCrudController');
 }); // this should be the absolute last line of this file
 
 /**

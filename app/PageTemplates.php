@@ -63,7 +63,7 @@ trait PageTemplates
     {
         $this->crud->addField([
             'name' => 'content',
-            'label' => trans('backpack::pagemanager.content'),
+            'label' => 'Mətn',
             'type' => 'tinymce',
             'placeholder' => trans('backpack::pagemanager.content_placeholder'),
         ]);
@@ -71,6 +71,7 @@ trait PageTemplates
         $this->crud->addField([
             'name' => 'image',
             'type' => 'image',
+            'label' => 'Şəkil',
             'upload' => true,
             'crop' => true,
             'wrapper' => ['class' => 'form-group col-md-6'],

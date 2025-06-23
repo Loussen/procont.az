@@ -7,7 +7,7 @@ use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VideoGallery extends Model
+class Category extends Model
 {
     use CrudTrait;
     use HasFactory;
@@ -19,14 +19,14 @@ class VideoGallery extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'videogallery';
+    protected $table = 'categories';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
 
-    public $translatable = ['title'];
+    public $translatable = ['name'];
 
     /*
     |--------------------------------------------------------------------------

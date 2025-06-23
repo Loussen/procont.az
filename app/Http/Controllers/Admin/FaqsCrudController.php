@@ -28,7 +28,7 @@ class FaqsCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Faqs::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/faqs');
-        CRUD::setEntityNameStrings('faqs', 'faqs');
+        CRUD::setEntityNameStrings('sual-cavab', 'sual-cavablar');
     }
 
     /**
@@ -39,8 +39,8 @@ class FaqsCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('question');
-        CRUD::column('answer');
+        CRUD::column('question')->label('Sual');
+        CRUD::column('answer')->label('Cavab');
 
         /**
          * Columns can be defined using the fluent syntax:
@@ -57,8 +57,8 @@ class FaqsCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::setValidation(FaqsRequest::class);
-        CRUD::field('question')->type('textarea');
-        CRUD::field('answer')->type('textarea');
+        CRUD::field('question')->label('Sual')->type('textarea');
+        CRUD::field('answer')->label('Cavab')->type('textarea');
 
         /**
          * Fields can be defined using the fluent syntax:

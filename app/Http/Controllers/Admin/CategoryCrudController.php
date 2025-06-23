@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ServicesRequest;
+use App\Http\Requests\CategoryRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ServicesCrudController
+ * Class CategoryCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ServicesCrudController extends CrudController
+class CategoryCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -21,25 +21,31 @@ class ServicesCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     *
+     * 
      * @return void
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Services::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/services');
-        CRUD::setEntityNameStrings('services', 'services');
+        CRUD::setModel(\App\Models\Category::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/category');
+        CRUD::setEntityNameStrings('kateqoriya', 'kateqoriyalar');
     }
 
     /**
      * Define what happens when the List operation is loaded.
-     *
+     * 
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // set columns from db columns.
+        CRUD::column('name')->label('Başlıq');
+        CRUD::addColumn([
+            'name' => 'type',
+            'label' => 'Tip',
+            'type' => 'select_from_array',
+            'options' => ['product' => 'Product', 'blog' => 'Blog'],
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax:
@@ -49,32 +55,21 @@ class ServicesCrudController extends CrudController
 
     /**
      * Define what happens when the Create operation is loaded.
-     *
+     * 
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ServicesRequest::class);
-        CRUD::field('name')->wrapper(['class' => 'form-group col-md-4']);
-        CRUD::field('short_description')->type('textarea')->wrapper(['class' => 'form-group col-md-8']);
-        CRUD::field('description')->type('tinymce');
-        CRUD::addField([   // icon_picker
-            'label'   => "Icon",
-            'name'    => 'icon',
-            'type'    => 'icon_picker',
-            'iconset' => 'fontawesome' // options: fontawesome, glyphicon, ionicon, weathericon, mapicon, octicon, typicon, elusiveicon, materialdesign
-        ]);
-
+        CRUD::setValidation(CategoryRequest::class);
+        CRUD::field('name')->label('Başlıq')->wrapper(['class' => 'form-group col-md-6']);
         CRUD::addField([
-            'name'      => 'sub_services',
-            'label'     => 'Sub Services for calculator',
-            'subfields' => [
-                [
-                    'name' => 'name',
-                    'type' => 'text',
-                ],
-            ],
+            'name' => 'type',
+            'label' => 'Tip',
+            'type' => 'select_from_array',
+            'options' => ['product' => 'Product', 'blog' => 'Blog'],
+            'allows_null' => true,
+            'wrapper' => ['class' => 'form-group col-md-6']
         ]);
 
         /**
@@ -85,7 +80,7 @@ class ServicesCrudController extends CrudController
 
     /**
      * Define what happens when the Update operation is loaded.
-     *
+     * 
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */

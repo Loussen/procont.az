@@ -31,7 +31,7 @@ class SettingsCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Settings::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/settings');
-        CRUD::setEntityNameStrings('settings', 'settings');
+        CRUD::setEntityNameStrings('ayarlar', 'ayarlar');
     }
 
     /**
@@ -59,12 +59,13 @@ class SettingsCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::setValidation(SettingsRequest::class);
-        CRUD::field('address')->type('textarea');
-        CRUD::field('phone')->wrapper(['class' => 'form-group col-md-6']);
+        CRUD::field('address')->label('Ünvan')->type('textarea');
+        CRUD::field('phone')->label('Telefon nömrəsi')->wrapper(['class' => 'form-group col-md-6']);
         CRUD::field('email')->wrapper(['class' => 'form-group col-md-6']);
         CRUD::field('map')->type('textarea');
         $subfieldsSocialProfileInfo[] = [
             'name'        => 'social_network',
+            'label'       => 'Sosial şəbəkə',
             'type'        => 'select2_from_array',
             'options'     => ['facebook' => 'Facebook', 'instagram' => 'Instagram', 'youtube' => 'YouTube'],
             'allows_null' => false,
@@ -82,6 +83,7 @@ class SettingsCrudController extends CrudController
         ];
         CRUD::addField([
             'name'          => 'social_profiles',
+            'label'       => 'Sosial şəbəkə profillər',
             'type'          => "repeatable",
             'subfields'     => $subfieldsSocialProfileInfo,
             'max_rows'      => 10,
@@ -91,13 +93,14 @@ class SettingsCrudController extends CrudController
 
         CRUD::addField([
             'name' => 'gallery',
+            'label'       => 'Qalereya',
             'type' => 'dropzone',
             'disk' => 'site_gallery',
             'withFiles'    => true,
             'hint' => '800x600'
         ]);
 
-        CRUD::field('work_hours');
+        CRUD::field('work_hours')->label('İş saatları');
 
         /**
          * Fields can be defined using the fluent syntax:
