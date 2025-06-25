@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\MenuItem;
 use App\Models\Page;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Illuminate\Support\Facades\App;
 
 class MenuItemCrudController extends CrudController
 {
@@ -16,6 +17,7 @@ class MenuItemCrudController extends CrudController
 
     public function setup()
     {
+        App::setLocale('az');
         $this->crud->setModel(MenuItem::class);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/menu-item');
         $this->crud->setEntityNameStrings('menyu', 'menyular');

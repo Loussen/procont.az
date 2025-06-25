@@ -27,31 +27,22 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="carousel carousel-promotion m-b-40" data-items="1" data-margin="40" data-loop="true" data-autoplay="true">
-                                @php
-                                    $gallery = json_decode($product->gallery, true) ?? [];
-                                    array_unshift($gallery, $product->image);
-                                @endphp
-                                @foreach($gallery as $galleryItem)
-                                    <div class="portfolio-item img-zoom">
-                                        <div class="portfolio-item-wrap">
-                                            <div class="portfolio-image">
-                                                <a href="#"><img src="{{ $loop->index == 0 ? asset('storage/'.$galleryItem) : Storage::disk('products_gallery')->url($galleryItem) }}" alt="{{ $product->name }}"></a>
-                                            </div>
-                                            <div class="portfolio-description">
-                                                <a title="Paper Pouch!" data-lightbox="image" href="{{ $loop->index == 0 ? asset('storage/'.$galleryItem) : Storage::disk('products_gallery')->url($galleryItem) }}" class="btn btn-light btn-roundeded">Zoom</a>
-                                            </div>
+                            <div class="m-b-40" data-items="1" data-margin="40">
+                                <div class="portfolio-item">
+                                    <div class="portfolio-item-wrap">
+                                        <div class="portfolio-image">
+                                            <img src="{{ asset('storage/'.$blog->image) }}" alt="{{ $blog->name }}">
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-lg-12">
                             <div class="project-description text-center">
-                                <h2>{{ $product->name }}</h2>
-                                <p>{!! $product->description !!}</p>
-                                <div class="portfolio-share">
+                                <h2>{{ $blog->title }}</h2>
+                                <p>{!! $blog->description !!}</p>
+                                <div class="portfolio-share" data-animate="fadeIn">
                                     <h4>Share this project</h4>
                                     <div class="align-center">
                                         <a class="btn btn-slide btn-light" href="#">
@@ -78,22 +69,22 @@
                 </div>
             </div>
             <div class="post-navigation">
-                @if($prevProduct)
-                    <a href="{{ route('product', ['id' => $prevProduct->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="post-prev">
+                @if($prevBlog)
+                    <a href="{{ route('blog', ['id' => $prevBlog->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="post-prev">
                         <div class="post-prev-title">
-                            <span>Əvvəlki Məhsul</span>
-                            {{ $prevProduct->name }}
+                            <span>Əvvəlki Xəbər</span>
+                            {{ $prevBlog->title }}
                         </div>
                     </a>
                 @endif
-                <a href="{{ route('products') }}" class="post-all">
+                <a href="{{ route('blogs') }}" class="post-all">
                     <i class="icon-grid"> </i>
                 </a>
-                @if($nextProduct)
-                    <a href="{{ route('product', ['id' => $nextProduct->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="post-next">
+                @if($nextBlog)
+                    <a href="{{ route('blog', ['id' => $nextBlog->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="post-next">
                         <div class="post-next-title">
-                            <span>Növbəti Məhsul</span>
-                            {{ $nextProduct->name }}
+                            <span>Növbəti Xəbər</span>
+                            {{ $nextBlog->title }}
                         </div>
                     </a>
                 @endif

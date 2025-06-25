@@ -42,133 +42,30 @@
             <!-- Blog -->
             <!-- Blog -->
             <div id="blog" class="grid-layout post-4-columns m-b-30" data-item="post-item">
-                <!-- Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="#">
-                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
-                            </a>
-                            <span class="post-meta-category"><a href="">Lifestyle</a></span>
-                        </div>
-                        <div class="post-item-description">
-                            <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                            <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
-                            <h2><a href="#">Standard post with a single image
-                                </a></h2>
-                            <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
-                            <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="#">
-                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
-                            </a>
-                            <span class="post-meta-category"><a href="">Lifestyle</a></span>
-                        </div>
-                        <div class="post-item-description">
-                            <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                            <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
-                            <h2><a href="#">Standard post with a single image
-                                </a></h2>
-                            <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
-                            <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                @foreach($blogs as $blog)
+                    <!-- Post item-->
+                    <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                <a href="{{ route('blog', ['id' => $blog->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">
+                                    <img alt="{{ $blog->title }}" src="{{ asset('storage/'.$blog->thumb_image) }}">
+                                </a>
+                                <span class="post-meta-category"><a href="javascript:void(0);">{{ $blog->category->name }}</a></span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{ $blog->created_at->translatedFormat('j F, Y') }}</span>
+                                <h2><a href="{{ route('blog', ['id' => $blog->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $blog->title }}
+                                    </a></h2>
+                                <p>{{ substr_($blog->short_description,0,200,true,true) }}</p>
+                                <a href="#" class="item-link">Ətraflı oxu <i class="icon-chevron-right"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- end: Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="#">
-                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
-                            </a>
-                            <span class="post-meta-category"><a href="">Lifestyle</a></span>
-                        </div>
-                        <div class="post-item-description">
-                            <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                            <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
-                            <h2><a href="#">Standard post with a single image
-                                </a></h2>
-                            <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
-                            <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="#">
-                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
-                            </a>
-                            <span class="post-meta-category"><a href="">Lifestyle</a></span>
-                        </div>
-                        <div class="post-item-description">
-                            <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                            <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
-                            <h2><a href="#">Standard post with a single image
-                                </a></h2>
-                            <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
-                            <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="#">
-                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
-                            </a>
-                            <span class="post-meta-category"><a href="">Lifestyle</a></span>
-                        </div>
-                        <div class="post-item-description">
-                            <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                            <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
-                            <h2><a href="#">Standard post with a single image
-                                </a></h2>
-                            <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
-                            <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="#">
-                                <img alt="" src="{{ asset('assets/images/slider_2.jpg') }}">
-                            </a>
-                            <span class="post-meta-category"><a href="">Lifestyle</a></span>
-                        </div>
-                        <div class="post-item-description">
-                            <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                            <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
-                            <h2><a href="#">Standard post with a single image
-                                </a></h2>
-                            <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
-                            <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
+                @endforeach
             </div>
             <!-- end: Blog -->
             <!-- Pagination -->
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-            </ul>
+            {{ $blogs->links('components.pagination.custom') }}
             <!-- end: Pagination -->
         </div>
         <!-- end: post content -->

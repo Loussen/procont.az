@@ -6,6 +6,7 @@ use App\Http\Requests\SettingsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\Pro\Http\Controllers\Operations\DropzoneOperation;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class SettingsCrudController
@@ -29,6 +30,7 @@ class SettingsCrudController extends CrudController
      */
     public function setup()
     {
+        App::setLocale('az');
         CRUD::setModel(\App\Models\Settings::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/settings');
         CRUD::setEntityNameStrings('ayarlar', 'ayarlar');
@@ -91,13 +93,62 @@ class SettingsCrudController extends CrudController
             'init_rows'     => 1,
         ]);
 
+        $subfieldsNumbers[] = [
+            'name'        => 'title',
+            'label' => 'Başlıq',
+            'wrapper'     => [
+                'class' => 'form-group col-md-8'
+            ],
+        ];
+        $subfieldsNumbers[] = [
+            'name'        => 'number',
+            'label' => 'Sayı',
+            'type'        => 'number',
+            'wrapper'     => [
+                'class' => 'form-group col-md-4'
+            ],
+        ];
+        CRUD::addField([
+            'name'          => 'numbers',
+            'label' => 'Dinamik saylar',
+            'type'          => "repeatable",
+            'subfields'     => $subfieldsNumbers,
+            'max_rows'      => 4,
+            'min_rows'      => 1,
+            'init_rows'     => 1,
+        ]);
+
+        $subfieldsServices[] = [
+            'name'        => 'title',
+            'label' => 'Başlıq',
+            'wrapper'     => [
+                'class' => 'form-group col-md-4'
+            ],
+        ];
+        $subfieldsServices[] = [
+            'name'        => 'description',
+            'label' => 'Mətn',
+            'type'        => 'textarea',
+            'wrapper'     => [
+                'class' => 'form-group col-md-8'
+            ],
+        ];
+        CRUD::addField([
+            'name'          => 'services',
+            'type'          => "repeatable",
+            'subfields'     => $subfieldsServices,
+            'max_rows'      => 4,
+            'min_rows'      => 1,
+            'init_rows'     => 1,
+        ]);
+
         CRUD::addField([
             'name' => 'gallery',
             'label'       => 'Qalereya',
             'type' => 'dropzone',
             'disk' => 'site_gallery',
             'withFiles'    => true,
-            'hint' => '800x600'
+            'hint' => '600x400'
         ]);
 
         CRUD::field('work_hours')->label('İş saatları');

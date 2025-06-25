@@ -44,3 +44,38 @@ if (! function_exists('youtube_embed')) {
         return $vid_id;
     }
 }
+
+if(! function_exists('substr_')) {
+    function substr_($string,$start,$limit=99999,$withFullWord=false,$continue=false){
+        $originalString = $string;
+        //This function doest not work in Japan alphabet
+        $from=array("Ü","ü","Ö","ö",'Ç','ç','Ğ','ğ','Ə','ə','Ş','ş','"'); $to=array("ひ","ら","が","な","あ","本","人","そ","れ","で","も","急","変");
+        $string=str_replace($from,$to,$string);
+        if($withFullWord)
+        {
+            $string = preg_replace('/\s+?(\S+)?$/', '', mb_substr(decode_text($string,true,true), $start, $limit,"utf-8"));
+        }
+        else $string = mb_substr(decode_text($string,true,true,false), $start, $limit,"utf-8");
+        $string=str_replace($to,$from,$string);
+        if(strlen($originalString) > $limit && $continue)
+            $string .= ' ...';
+        return $string;
+    }
+}
+
+if(! function_exists('decode_text'))
+{
+    function decode_text($value,$runHtml=false,$strip=false,$trim=true)
+    {
+        if ($trim) {
+            $value = str_replace("&nbsp;", " ", $value);
+            $value = trim($value);
+        }
+        $from = array('&single_quot;', '\\\\', "&nbsp;", "  ");
+        $to = array("'", '\\', " ", " ");
+        $value = str_replace($from, $to, $value);
+        if ($runHtml) $value = html_entity_decode($value); else $value = htmlentities($value);
+        if ($strip) $value = strip_tags($value);
+        return $value;
+    }
+}

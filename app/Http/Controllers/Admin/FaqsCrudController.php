@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\FaqsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class FaqsCrudController
@@ -26,6 +27,7 @@ class FaqsCrudController extends CrudController
      */
     public function setup()
     {
+        App::setLocale('az');
         CRUD::setModel(\App\Models\Faqs::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/faqs');
         CRUD::setEntityNameStrings('sual-cavab', 'sual-cavablar');

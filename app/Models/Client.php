@@ -3,19 +3,17 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Intervention\Image\ImageManagerStatic as Image;
 
-class Page extends Model
+class Client extends Model
 {
     use CrudTrait;
-    use Sluggable;
-    use SluggableScopeHelpers;
+    use HasFactory;
     use HasTranslations;
 
     /*
@@ -24,57 +22,24 @@ class Page extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'pages';
-    protected $primaryKey = 'id';
-    public $timestamps = true;
-    // protected $guarded = ['id'];
-    protected $fillable = ['template', 'name', 'title', 'slug', 'content', 'image'];
+    protected $table = 'clients';
+    // protected $primaryKey = 'id';
+    // public $timestamps = false;
+    protected $guarded = ['id'];
+    // protected $fillable = [];
     // protected $hidden = [];
-    // protected $dates = [];
-//    protected $casts = [
-//        'extras' => 'array',
-//    ];
-
-    public $translatable = ['title', 'content'];
 
     private string $image = 'image';
+    private string $thumbImage = 'thumb_image';
     private string $disk = 'public';
 
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'slug_or_title',
-            ],
-        ];
-    }
+    public $translatable = ['name'];
 
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
-    public function getTemplateName()
-    {
-        return str_replace('_', ' ', Str::title($this->template));
-    }
-
-    public function getPageLink()
-    {
-        return url($this->slug);
-    }
-
-    public function getOpenButton()
-    {
-        return '<a class="btn btn-sm btn-link" href="'.$this->getPageLink().'" target="_blank">'.
-            '<i class="la la-eye"></i> '.trans('backpack::pagemanager.open').'</a>';
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -90,32 +55,24 @@ class Page extends Model
 
     /*
     |--------------------------------------------------------------------------
-    | ACCESORS
+    | ACCESSORS
     |--------------------------------------------------------------------------
     */
-
-    // The slug is created automatically from the "name" field if no slug exists.
-    public function getSlugOrTitleAttribute()
-    {
-        if ($this->slug != '') {
-            return $this->slug;
-        }
-
-        return $this->title;
-    }
 
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
     public function setImageAttribute($value): void
     {
         $attribute_name = $this->image;
+        $thumb_attribute_name = $this->thumbImage;
         // or use your own disk, defined in config/filesystems.php
         $disk = $this->disk;
         // destination path relative to the disk above
-        $destination_path = "uploads/images/page/images";
+        $destination_path = "uploads/images/clients/images";
 
         // if the image was erased
         if (empty($value)) {
@@ -123,8 +80,13 @@ class Page extends Model
             if (!empty($this->{$attribute_name})) {
                 Storage::disk($disk)->delete($this->{$attribute_name});
             }
+            if (!empty($this->{$thumb_attribute_name})) {
+                Storage::disk($disk)->delete($this->{$thumb_attribute_name});
+            }
             // set null on database column
             $this->attributes[$attribute_name] = null;
+            $this->attributes[$thumb_attribute_name] = null;
+            return;
         }
 
         // if a base64 was sent, store it in the db
@@ -136,12 +98,19 @@ class Page extends Model
             // 1. Generate a filename.
             $filename = md5($value.time()).'.png';
 
+            $thumbnail = Image::make($value)->fit(138, 46)->encode('png', 90);
+            $thumb_filename = md5($value . time()) . '_thumb.png';
+
             // 2. Store the image on disk.
             Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());
+            Storage::disk($disk)->put($destination_path . '/' . $thumb_filename, $thumbnail->stream());
 
             // 3. Delete the previous image, if there was one.
             if (!empty($this->{$attribute_name})) {
                 Storage::disk($disk)->delete($this->{$attribute_name});
+            }
+            if (!empty($this->{$thumb_attribute_name})) {
+                Storage::disk($disk)->delete($this->{$thumb_attribute_name});
             }
 
             // 4. Save the public path to the database
@@ -150,6 +119,7 @@ class Page extends Model
             // is the public URL (everything that comes after the domain name)
             $public_destination_path = Str::replaceFirst('public/', '', $destination_path);
             $this->attributes[$attribute_name] = $public_destination_path.'/'.$filename;
+            $this->attributes[$thumb_attribute_name] = $public_destination_path . '/' . $thumb_filename;
         }
     }
 }

@@ -235,20 +235,20 @@
         },
         {
             "name": "backpack/language-switcher",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/language-switcher.git",
-                "reference": "6773d5b4caebf4f7e212c318983abe6707c4b117"
+                "reference": "8ec99a55a27c38f7b54ac0f58628d481911d7d86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/language-switcher/zipball/6773d5b4caebf4f7e212c318983abe6707c4b117",
-                "reference": "6773d5b4caebf4f7e212c318983abe6707c4b117",
+                "url": "https://api.github.com/repos/Laravel-Backpack/language-switcher/zipball/8ec99a55a27c38f7b54ac0f58628d481911d7d86",
+                "reference": "8ec99a55a27c38f7b54ac0f58628d481911d7d86",
                 "shasum": ""
             },
             "require": {
-                "backpack/crud": "^6.0",
+                "backpack/crud": "^6.7",
                 "outhebox/blade-flags": "^1.2"
             },
             "require-dev": {
@@ -295,9 +295,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Laravel-Backpack/language-switcher/issues",
-                "source": "https://github.com/Laravel-Backpack/language-switcher/tree/2.0.0"
+                "source": "https://github.com/Laravel-Backpack/language-switcher/tree/2.0.1"
             },
-            "time": "2024-01-17T13:50:28+00:00"
+            "time": "2025-03-10T13:24:04+00:00"
         },
         {
             "name": "backpack/menucrud",

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\SlidersRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class SlidersCrudController
@@ -26,6 +27,7 @@ class SlidersCrudController extends CrudController
      */
     public function setup()
     {
+        App::setLocale('az');
         CRUD::setModel(\App\Models\Sliders::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/sliders');
         CRUD::setEntityNameStrings('slayder', 'slayderlər');

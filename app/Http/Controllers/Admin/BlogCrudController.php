@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\BlogRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class BlogCrudController
@@ -26,6 +27,7 @@ class BlogCrudController extends CrudController
      */
     public function setup()
     {
+        App::setLocale('az');
         CRUD::setModel(\App\Models\Blog::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/blog');
         CRUD::setEntityNameStrings('xəbər', 'xəbərlər');

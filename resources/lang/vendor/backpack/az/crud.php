@@ -185,5 +185,15 @@ return [
 
     // The pivot selector required validation message
     'pivot_selector_required_validation_message' => 'Pivot sahəsi tələb olunur.',
+
+    // Quick button messages
+    'quick_button_ajax_error_title' => 'Sorgu Uğursuz Oldu!',
+    'quick_button_ajax_error_message' => 'Sorgu icra olunarkən xəta baş verdi.',
+    'quick_button_ajax_success_title' => 'Sorgu Tamamlandı!',
+    'quick_button_ajax_success_message' => 'Sorgunuz uğurla tamamlandı.',
+
+    // translations
+    'no_attributes_translated' => 'Bu məlumat :locale dilində tərcümə olunmayıb.',
+    'no_attributes_translated_href_text' => 'Məlumatları :locale dilindən doldur',
 ];
 

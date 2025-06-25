@@ -6,6 +6,7 @@ use App\Http\Requests\ProductsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\Pro\Http\Controllers\Operations\DropzoneOperation;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class ProductsCrudController
@@ -29,6 +30,7 @@ class ProductsCrudController extends CrudController
      */
     public function setup()
     {
+        App::setLocale('az');
         CRUD::setModel(\App\Models\Products::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/products');
         CRUD::setEntityNameStrings('məhsul', 'məhsullar');
@@ -109,6 +111,7 @@ class ProductsCrudController extends CrudController
             'type' => 'dropzone',
             'disk' => 'products_gallery',
             'withFiles'    => true,
+            'hint' => '895x590'
         ]);
 
 

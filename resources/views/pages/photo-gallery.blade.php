@@ -28,36 +28,18 @@
         <div class="container-fluid">
             <!-- Gallery -->
             <div class="grid-layout grid-5-columns" data-margin="20" data-item="grid-item" data-lightbox="gallery">
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/1.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/1.jpg"></a>
-                </div>
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/2.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/2.jpg"></a>
-                </div>
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/3.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/3.jpg"></a>
-                </div>
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/4.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/4.jpg"></a>
-                </div>
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/5.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/5.jpg"></a>
-                </div>
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/6.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/6.jpg"></a>
-                </div>
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/7.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/7.jpg"></a>
-                </div>
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/8.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/8.jpg"></a>
-                </div>
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/9.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/9.jpg"></a>
-                </div>
-                <div class="grid-item">
-                    <a class="image-hover-zoom" href="https://inspirothemes.com/polo/images/gallery/10.jpg" data-lightbox="gallery-image"><img src="https://inspirothemes.com/polo/images/gallery/10.jpg"></a>
-                </div>
+                @php
+                    $gallery = $siteSettings->gallery;
+                @endphp
+                @foreach($gallery as $galleryItem)
+                    @php
+                        $info = pathinfo($galleryItem);
+                        $thumbPath = $info['dirname'] . '/' . $info['filename'] . '_thumb.' . $info['extension'];
+                    @endphp
+                    <div class="grid-item">
+                        <a class="image-hover-zoom" href="{{ Storage::disk('site_gallery')->url($galleryItem) }}" data-lightbox="gallery-image"><img src="{{ Storage::disk('site_gallery')->url($thumbPath) }}"></a>
+                    </div>
+                @endforeach
             </div>
             <!-- end: Gallery -->
         </div>

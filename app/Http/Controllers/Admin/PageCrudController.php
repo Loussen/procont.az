@@ -10,6 +10,7 @@ use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use App\Http\Requests\PageRequest;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -24,6 +25,7 @@ class PageCrudController extends CrudController
 
     public function setup(): void
     {
+        App::setLocale('az');
         $this->crud->setModel(Page::class);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
         $this->crud->setEntityNameStrings('səhifə', 'səhifələr');

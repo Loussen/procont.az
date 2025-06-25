@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Settings;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,7 +22,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-//        $siteSettings = Settings::first();
-//        \view()->share('siteSettings',$siteSettings);
+        app()->setLocale(
+            Session::get('backpack.language-switcher.locale', config('app.locale'))
+        );
+
+        Carbon::setLocale('az');
+
+        $siteSettings = Settings::first();
+        \view()->share('siteSettings',$siteSettings);
     }
 }

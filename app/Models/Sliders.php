@@ -86,7 +86,7 @@ class Sliders extends Model
         if (Str::startsWith($value, 'data:image'))
         {
             // 0. Make the image
-            $image = Image::make($value)->encode('jpg', 90);
+            $image = Image::make($value)->encode('png', 90);
 
             // 1. Generate a filename.
             $filename = md5($value.time()).'.png';

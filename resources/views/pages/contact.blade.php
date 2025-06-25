@@ -58,23 +58,24 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <address>
-                                <strong>Polo, Inc.</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</h4> (123) 456-7890
+                                <strong>Ünvan:</strong>
+                                {{ $siteSettings->address }}
+                                <br />
+                                <strong>İş saatları:</strong>
+                                {{ $siteSettings->work_hours }}
                             </address>
                         </div>
                         <div class="col-lg-6">
                             <address>
-                                <strong>Polo Office</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</h4> (123) 456-7890
+                                <strong>Telefon:</strong>
+                                {{ $siteSettings->phone }}<br>
+                                <strong>Email:</strong>
+                                {{ $siteSettings->email }}<br>
                             </address>
                         </div>
                     </div>
                     <!-- Google Map -->
-                    <div class="map" data-latitude="-37.817240" data-longitude="144.955826" data-style="light" data-info="Hello from &lt;br&gt; Inspiro Themes"></div>
+                    <iframe style="border:0; width: 100%; height: 370px;" src="{{ $siteSettings->map }}" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <!-- end: Google Map -->
                 </div>
             </div>
@@ -82,7 +83,7 @@
     </section>
 @endsection
 
-@push('scripts')
-    <script type="text/javascript" src="{{ asset('assets/js/gmap3.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/map-styles.js"') }}></script>
-@endpush
+{{--@push('scripts')--}}
+{{--    <script type="text/javascript" src="{{ asset('assets/js/gmap3.min.js') }}"></script>--}}
+{{--    <script type="text/javascript" src="{{ asset('assets/js/map-styles.js"') }}></script>--}}
+{{--@endpush--}}

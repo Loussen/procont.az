@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\Category;
+use App\Models\Client;
 use App\Models\ContactRequests;
 use App\Models\Departments;
 use App\Models\Doctors;
@@ -29,7 +32,13 @@ class MainController extends Controller
      */
     public function dashboard(Request $request)
     {
-        return view('pages.home');
+        $sliders = Sliders::all();
+        $aboutUs = Page::where('slug','about-us')->first();
+        $products = Products::all();
+        $clients = Client::all();
+        $blogs = Blog::orderBy('id','DESC')->limit(3)->get();
+
+        return view('pages.home',['sliders' => $sliders, 'aboutUs' => $aboutUs, 'products' => $products, 'clients' => $clients, 'blogs' => $blogs]);
     }
 
     public function page($locale = null, $slug = null)
@@ -49,69 +58,29 @@ class MainController extends Controller
 
     public function products()
     {
-        return view('pages.products');
-    }
+        $categories = Category::where('type','product')->get();
+        $products = Products::all();
 
-    public function services()
-    {
-        $services = Services::paginate(6);
-        return view('pages.services', compact('services'));
-    }
-
-    public function departments()
-    {
-        $departments = Departments::paginate(8);
-        return view('pages.departments', compact('departments'));
-    }
-
-    public function doctors()
-    {
-        $doctors = Doctors::paginate(8);
-        return view('pages.doctors', compact('doctors'));
+        return view('pages.products',['categories' => $categories, 'products' => $products]);
     }
 
     public function product($locale = null, $id)
     {
-        return view('pages.product');
-    }
+        $product = Products::find($id);
 
-    public function department($locale = null, $id)
-    {
-        $department = Departments::find($id);
-
-        if(!$department) {
+        if(!$product) {
             abort(404);
         }
 
-        $otherDepartments = Departments::where('id','!=',$id)->get();
+        $prevProduct = Products::where('id', '<', $product->id)
+            ->orderBy('id', 'desc')
+            ->first();
 
-        return view('pages.department', compact('department','otherDepartments'));
-    }
+        $nextProduct = Products::where('id', '>', $product->id)
+            ->orderBy('id', 'asc')
+            ->first();
 
-    public function service($locale = null, $id)
-    {
-        $service = Services::find($id);
-
-        if(!$service) {
-            abort(404);
-        }
-
-        $otherServices = Services::where('id','!=',$id)->get();
-
-        return view('pages.service', compact('service','otherServices'));
-    }
-
-    public function doctor($locale = null, $id)
-    {
-        $doctor = Doctors::find($id);
-
-        if(!$doctor) {
-            abort(404);
-        }
-
-        $otherDoctors = Doctors::where('id','!=',$id)->where('hospital_id',$doctor->hospital_id)->get();
-
-        return view('pages.doctor', compact('doctor','otherDoctors'));
+        return view('pages.product',['product' => $product, 'prevProduct' => $prevProduct, 'nextProduct' => $nextProduct]);
     }
 
     public function contact()
@@ -165,20 +134,26 @@ class MainController extends Controller
 
     public function blogs()
     {
-        $blogs = Page::where('template','page')->paginate(8);
+        $blogs = Blog::paginate(8);
         return view('pages.blogs', compact('blogs'));
     }
 
     public function blog($locale = null, $id)
     {
-        $blog = Page::find($id);
+        $blog = Blog::find($id);
 
         if(!$blog) {
             abort(404);
         }
 
-        $otherBlogs = Page::where('template','page')->where('id','!=',$id)->get();
+        $prevBlog = Blog::where('id', '<', $blog->id)
+            ->orderBy('id', 'desc')
+            ->first();
 
-        return view('pages.blog', compact('blog','otherBlogs'));
+        $nextBlog = Blog::where('id', '>', $blog->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        return view('pages.blog', compact('blog','prevBlog','nextBlog'));
     }
 }

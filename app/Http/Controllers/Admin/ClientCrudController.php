@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\ClientRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\App;
 
 /**
- * Class CategoryCrudController
+ * Class ClientCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class CategoryCrudController extends CrudController
+class ClientCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -28,9 +28,9 @@ class CategoryCrudController extends CrudController
     public function setup()
     {
         App::setLocale('az');
-        CRUD::setModel(\App\Models\Category::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/category');
-        CRUD::setEntityNameStrings('kateqoriya', 'kateqoriyalar');
+        CRUD::setModel(\App\Models\Client::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/client');
+        CRUD::setEntityNameStrings('müştəri', 'müştərilərimiz');
     }
 
     /**
@@ -41,12 +41,16 @@ class CategoryCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name')->label('Başlıq');
+        CRUD::column('name')->label('Ad');
+        CRUD::column('link')->label('Link');
         CRUD::addColumn([
-            'name' => 'type',
-            'label' => 'Tip',
-            'type' => 'select_from_array',
-            'options' => ['product' => 'Product', 'blog' => 'Blog'],
+            'name' => 'image',
+            'label' => 'Şəkil',
+            'type' => 'image',
+            'upload' => true,
+            'prefix' => 'storage/',
+            'crop' => true,
+            'wrapper' => ['class' => 'form-group col-md-6'],
         ]);
 
         /**
@@ -63,15 +67,17 @@ class CategoryCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(CategoryRequest::class);
-        CRUD::field('name')->label('Başlıq')->wrapper(['class' => 'form-group col-md-6']);
+        CRUD::setValidation(ClientRequest::class);
+        CRUD::field('name')->label('Ad')->wrapper(['class' => 'form-group col-md-4']);
+        CRUD::field('link')->label('Link')->wrapper(['class' => 'form-group col-md-4']);
         CRUD::addField([
-            'name' => 'type',
-            'label' => 'Tip',
-            'type' => 'select_from_array',
-            'options' => ['product' => 'Product', 'blog' => 'Blog'],
-            'allows_null' => true,
-            'wrapper' => ['class' => 'form-group col-md-6']
+            'name' => 'image',
+            'type' => 'image',
+            'label' => 'Şəkil',
+            'upload' => true,
+            'crop' => true,
+            'wrapper' => ['class' => 'form-group col-md-4'],
+            'hint' => '138x46'
         ]);
 
         /**
