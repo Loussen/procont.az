@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-12">{!! $aboutUs->content !!}</div>
+                        <div class="col-lg-12">{!! $aboutUs->content ?? '' !!}</div>
 
                     </div>
                 </div>
@@ -158,7 +158,7 @@
 
         <!-- Load next portfolio items -->
         <div id="pagination" class="infinite-scroll">
-            <a href="home-portfolio-v10-infinite-scroll-2.html"></a>
+            <a href="{{ route('photo-gallery') }}"></a>
         </div>
         <!-- end:Load next portfolio items -->
 

@@ -2,7 +2,7 @@
     <div class="header-inner">
         <div class="container">
             <!--Logo-->
-            <div id="logo"> <a href="index.html"><span class="logo-default">POLO</span><span class="logo-dark">POLO</span></a> </div>
+            <div id="logo"> <a href="{{ route('home') }}"><span class="logo-default">PROCONT</span><span class="logo-dark">PROCONT</span></a> </div>
             <!--End: Logo-->
             <!-- Search -->
             <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i class="icon-x"></i></a>
