@@ -3,23 +3,23 @@
 @section('title', 'Welcome to Clinics - Your Health is Our Priority')
 
 @section('content')
-    <!-- Page title -->
-    <section id="page-title" data-bg-parallax="{{ asset('assets/images/slider_1.jpg') }}">
-        <div class="container">
-            <div class="page-title">
-                <h1>Contact Us</h1>
-                <span>The most happiest time of the day!.</span>
-            </div>
-            <div class="breadcrumb">
-                <ul>
-                    <li><a href="#">Home</a> </li>
-                    <li><a href="#">Pages</a> </li>
-                    <li class="active"><a href="#">Contact Us</a> </li>
-                </ul>
+    <!-- Inspiro Slider -->
+    <div id="slider" class="inspiro-slider dots-creative" data-height-xs="360">
+        <!-- Slide 2 -->
+        <div class="slide kenburns" style="background-image:url('{{ asset('storage/'.$getMenu->bg_image_thumb) }}');">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="slide-captions text-center text-light">
+                    <!-- Captions -->
+                    <h1>Xəbərlər</h1>
+                    <!-- end: Captions -->
+                </div>
             </div>
         </div>
-    </section>
-    <!-- end: Page title -->
+        <!-- end: Slide 2 -->
+
+    </div>
+    <!--end: Inspiro Slider -->
     <!-- Content -->
     <section id="page-content">
         <div class="container">

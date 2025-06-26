@@ -10,6 +10,7 @@ use App\Models\Departments;
 use App\Models\Doctors;
 use App\Models\Faqs;
 use App\Models\Features;
+use App\Models\MenuItem;
 use App\Models\Products;
 use App\Models\Page;
 use App\Models\Services;
@@ -53,7 +54,9 @@ class MainController extends Controller
             abort(404);
         }
 
-        return view('pages.page', ['page' => $page]);
+        $getMenu = MenuItem::where('page_id',$page->id)->first();
+
+        return view('pages.page', ['page' => $page, 'getMenu' => $getMenu]);
     }
 
     public function products()
@@ -61,12 +64,14 @@ class MainController extends Controller
         $categories = Category::where('type','product')->get();
         $products = Products::all();
 
-        return view('pages.products',['categories' => $categories, 'products' => $products]);
+        $getMenu = MenuItem::where('link','products')->where('type','internal_link')->first();
+
+        return view('pages.products',['categories' => $categories, 'products' => $products, 'getMenu' => $getMenu]);
     }
 
-    public function product($locale = null, $id)
+    public function product($locale = null, $slug)
     {
-        $product = Products::find($id);
+        $product = Products::where('slug',$slug)->first();
 
         if(!$product) {
             abort(404);
@@ -80,12 +85,15 @@ class MainController extends Controller
             ->orderBy('id', 'asc')
             ->first();
 
-        return view('pages.product',['product' => $product, 'prevProduct' => $prevProduct, 'nextProduct' => $nextProduct]);
+        $getMenu = MenuItem::where('link','products')->where('type','internal_link')->first();
+
+        return view('pages.product',['product' => $product, 'prevProduct' => $prevProduct, 'nextProduct' => $nextProduct, 'getMenu' => $getMenu]);
     }
 
     public function contact()
     {
-        return view('pages.contact');
+        $getMenu = MenuItem::where('link','contact')->where('type','internal_link')->first();
+        return view('pages.contact',compact('getMenu'));
     }
 
     public function contactForm(Request $request)
@@ -129,18 +137,21 @@ class MainController extends Controller
 
     public function photoGallery()
     {
-        return view('pages.photo-gallery');
+        $getMenu = MenuItem::where('link','photo-gallery')->where('type','internal_link')->first();
+
+        return view('pages.photo-gallery',['getMenu' => $getMenu]);
     }
 
     public function blogs()
     {
         $blogs = Blog::paginate(8);
-        return view('pages.blogs', compact('blogs'));
+        $getMenu = MenuItem::where('link','blogs')->where('type','internal_link')->first();
+        return view('pages.blogs', compact('blogs','getMenu'));
     }
 
-    public function blog($locale = null, $id)
+    public function blog($locale = null, $slug)
     {
-        $blog = Blog::find($id);
+        $blog = Blog::where('slug',$slug)->first();
 
         if(!$blog) {
             abort(404);
@@ -154,6 +165,8 @@ class MainController extends Controller
             ->orderBy('id', 'asc')
             ->first();
 
-        return view('pages.blog', compact('blog','prevBlog','nextBlog'));
+        $getMenu = MenuItem::where('link','blogs')->where('type','internal_link')->first();
+
+        return view('pages.blog', compact('blog','prevBlog','nextBlog','getMenu'));
     }
 }

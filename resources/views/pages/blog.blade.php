@@ -3,22 +3,23 @@
 @section('title', 'Welcome to Clinics - Your Health is Our Priority')
 
 @section('content')
-    <!-- Page title -->
-    <section id="page-title" class="background-image" style="background-image:url({{ asset('assets/images/slider_1.jpg') }});">
-        <div class="container">
-            <div class="page-title">
-                <div data-animate="fadeIn" class="text-light">
-                    <h1>Guide to the World</h1>
-                </div>
-                <div class="portfolio-attributes style1 text-light">
-                    <div class="attribute" data-animate="fadeInUp" data-animate-delay="1000"><strong>Client:</strong> Woody Furniture</div>
-                    <div class="attribute" data-animate="fadeInUp" data-animate-delay="1200"><strong>Date:</strong> 2017-07-10</div>
-                    <div class="attribute" data-animate="fadeInUp" data-animate-delay="1400"><strong>Services:</strong> Web Design </div>
+    <!-- Inspiro Slider -->
+    <div id="slider" class="inspiro-slider dots-creative" data-height-xs="360">
+        <!-- Slide 2 -->
+        <div class="slide kenburns" style="background-image:url('{{ asset('storage/'.$getMenu->bg_image_thumb) }}');">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="slide-captions text-center text-light">
+                    <!-- Captions -->
+                    <h1>{{ $blog->title }}</h1>
+                    <!-- end: Captions -->
                 </div>
             </div>
         </div>
-    </section>
-    <!-- end: Page title -->
+        <!-- end: Slide 2 -->
+
+    </div>
+    <!--end: Inspiro Slider -->
     <!-- Content -->
     <section id="page-content" class="p-b-0">
         <div class="container">
@@ -70,7 +71,7 @@
             </div>
             <div class="post-navigation">
                 @if($prevBlog)
-                    <a href="{{ route('blog', ['id' => $prevBlog->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="post-prev">
+                    <a href="{{ route('blog', ['slug' => $prevBlog->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="post-prev">
                         <div class="post-prev-title">
                             <span>Əvvəlki Xəbər</span>
                             {{ $prevBlog->title }}
@@ -81,7 +82,7 @@
                     <i class="icon-grid"> </i>
                 </a>
                 @if($nextBlog)
-                    <a href="{{ route('blog', ['id' => $nextBlog->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="post-next">
+                    <a href="{{ route('blog', ['slug' => $nextBlog->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="post-next">
                         <div class="post-next-title">
                             <span>Növbəti Xəbər</span>
                             {{ $nextBlog->title }}

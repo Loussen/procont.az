@@ -28,7 +28,7 @@
                         <ul class="list">
                             @foreach($products as $product)
                                 <li>
-                                    <a href="{{ route('product', ['id' => $product->id, 'locale' => app()->getLocale()]) }}">
+                                    <a href="{{ route('product', ['slug' => $product->slug, 'locale' => app()->getLocale()]) }}">
                                         {{ $product->name }}
                                     </a>
                                 </li>

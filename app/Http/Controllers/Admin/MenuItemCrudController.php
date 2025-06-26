@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\MenuItem;
 use App\Models\Page;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\App;
 
 class MenuItemCrudController extends CrudController
@@ -58,6 +59,15 @@ class MenuItemCrudController extends CrudController
                 'type' => 'page_or_link',
                 'page_model' => Page::class,
                 'view_namespace' => file_exists(resource_path('views/vendor/backpack/crud/fields/page_or_link.blade.php')) ? null : 'menucrud::fields',
+            ]);
+            $this->crud->addField([
+                'name' => 'bg_image',
+                'type' => 'image',
+                'label' => 'Arxa fon şəkil',
+                'upload' => true,
+                'crop' => true,
+                'wrapper' => ['class' => 'form-group col-md-12'],
+                'hint' => '1920x1280'
             ]);
             $this->crud->addField([   // CustomHTML
                 'name' => 'metas_separator',

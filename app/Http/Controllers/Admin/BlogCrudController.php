@@ -44,6 +44,9 @@ class BlogCrudController extends CrudController
         CRUD::column('title')->label('Başlıq');
         CRUD::column('short_description')->label('Qısa mətn');
         CRUD::addColumn([
+            'name' => 'slug',
+        ]);
+        CRUD::addColumn([
             'name' => 'image',
             'label' => 'Şəkil',
             'type' => 'image',
@@ -79,7 +82,13 @@ class BlogCrudController extends CrudController
     {
         CRUD::setValidation(BlogRequest::class);
         CRUD::field('title')->label('Başlıq')->wrapper(['class' => 'form-group col-md-4']);
-        CRUD::field('short_description')->label('Qısa mətn')->type('textarea')->wrapper(['class' => 'form-group col-md-8']);
+        CRUD::field('short_description')->label('Qısa mətn')->type('textarea')->wrapper(['class' => 'form-group col-md-5']);
+        CRUD::addField([
+            'name' => 'slug',
+            'type' => 'text',
+            'hint' => trans('backpack::pagemanager.page_slug_hint'),
+            'wrapper' => ['class' => 'form-group col-md-3'],
+        ]);
         CRUD::field('description')->label('Mətn')->type('tinymce');
         CRUD::addField([
             'name' => 'image',

@@ -24,8 +24,11 @@ class BlogRequest extends FormRequest
      */
     public function rules()
     {
+        $id = \Request::get('id');
+
         return [
-            // 'name' => 'required|min:5|max:255'
+            'title' => 'required|min:2|max:255',
+            'slug' => 'nullable|unique:blogs,slug,' . $id . ',id'
         ];
     }
 

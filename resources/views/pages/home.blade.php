@@ -54,12 +54,12 @@
                     <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
                         <div class="portfolio-item-wrap">
                             <div class="portfolio-image">
-                                <a href="{{ route('product', ['id' => $product->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}"><img src="{{ asset("storage/".$product->thumb_image) }}" alt=""></a>
+                                <a href="{{ route('product', ['slug' => $product->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}"><img src="{{ asset("storage/".$product->thumb_image) }}" alt=""></a>
                             </div>
                             <div class="portfolio-description">
-                                <a href="{{ route('product', ['id' => $product->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">
+                                <a href="{{ route('product', ['slug' => $product->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">
                                     <h3>{{ $product->name }}</h3>
-                                    <span>{{ $product->category->name }}</span>
+                                    <span>{{ $product->category->name ?? '' }}</span>
                                 </a>
                             </div>
                         </div>
@@ -180,18 +180,18 @@
                         <div class="post-item border">
                             <div class="post-item-wrap">
                                 <div class="post-image">
-                                    <a href="{{ route('blog', ['id' => $blog->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">
+                                    <a href="{{ route('blog', ['slug' => $blog->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">
                                         <img alt="{{ $blog->title }}" src="{{ asset('storage/'.$blog->thumb_image) }}">
                                     </a>
                                     <span class="post-meta-category"><a href="javascript:void(0);">{{ $blog->category->name }}</a></span>
                                 </div>
                                 <div class="post-item-description">
                                     <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{ $blog->created_at->translatedFormat('j F, Y') }}</span>
-                                    <h2><a href="{{ route('blog', ['id' => $blog->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $blog->title }}
+                                    <h2><a href="{{ route('blog', ['slug' => $blog->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $blog->title }}
                                         </a></h2>
                                     <p>{{ substr_($blog->short_description,0,200,true,true) }}</p>
 
-                                    <a href="{{ route('blog', ['id' => $blog->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="item-link">Ətraflı oxu <i class="fa fa-arrow-right"></i></a>
+                                    <a href="{{ route('blog', ['slug' => $blog->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}" class="item-link">Ətraflı oxu <i class="fa fa-arrow-right"></i></a>
 
                                 </div>
                             </div>

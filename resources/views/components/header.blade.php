@@ -1,4 +1,4 @@
-<header id="header" data-transparent="true" class="{{ in_array(Route::currentRouteName(),['products']) ? '' : 'dark' }}">
+<header id="header" data-transparent="true" class="{{ in_array(Route::currentRouteName(),['']) ? '' : 'dark' }}">
     <div class="header-inner">
         <div class="container">
             <!--Logo-->
@@ -10,19 +10,19 @@
             </div>
             <!--End: Logo-->
             <!-- Search -->
-            <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i class="icon-x"></i></a>
-                <form class="search-form" action="search-results-page.html" method="get">
-                    <input class="form-control" name="q" type="text" placeholder="Type & Search..." />
-                    <span class="text-muted">Start typing & press "Enter" or "ESC" to close</span>
-                </form>
-            </div>
+{{--            <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i class="icon-x"></i></a>--}}
+{{--                <form class="search-form" action="search-results-page.html" method="get">--}}
+{{--                    <input class="form-control" name="q" type="text" placeholder="Type & Search..." />--}}
+{{--                    <span class="text-muted">Start typing & press "Enter" or "ESC" to close</span>--}}
+{{--                </form>--}}
+{{--            </div>--}}
             <!-- end: search -->
             <!--Header Extras-->
             <div class="header-extras">
                 <ul>
-                    <li>
-                        <a id="btn-search" href="#"> <i class="icon-search"></i></a>
-                    </li>
+{{--                    <li>--}}
+{{--                        <a id="btn-search" href="#"> <i class="icon-search"></i></a>--}}
+{{--                    </li>--}}
                     <li>
                         <div class="p-dropdown">
                             <a href="javascript:void(0);"><i class="icon-globe"></i><span>{{ app()->getLocale() }}</span></a>
@@ -33,7 +33,7 @@
                                             $params = ['locale' => $locale];
 
                                             // Əgər route `page`-dirsə, `slug`-u əlavə edirik
-                                            if (\Illuminate\Support\Facades\Route::currentRouteName() === 'page') {
+                                            if (in_array(\Illuminate\Support\Facades\Route::currentRouteName(),['page','blog','product'])) {
                                                 $params['slug'] = request()->route('slug');
                                             } else {
                                                 $params['id'] = request()->route('id');
@@ -57,7 +57,7 @@
                     <nav>
                         <ul>
                             @foreach (\App\Models\MenuItem::getTree() as $item)
-                                <li>
+                                <li class="{{ in_array($item->link,['products']) ? 'dropdown' : '' }}">
                                     @php
                                         if($item->type == 'internal_link') {
                                             $link = route($item->link, ['locale' => \Illuminate\Support\Facades\App::getLocale()]);
@@ -68,6 +68,13 @@
                                         }
                                     @endphp
                                     <a href="{{ $link }}">{{ $item->name }}</a>
+                                    @if($item->link == 'products')
+                                        <ul class="dropdown-menu">
+                                            @foreach(\App\Models\Products::all() as $product)
+                                                <li><a href="{{ route('product', ['slug' => $product->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $product->name }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </li>
                             @endforeach
                         </ul>

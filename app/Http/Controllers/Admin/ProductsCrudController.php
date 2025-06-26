@@ -56,6 +56,9 @@ class ProductsCrudController extends CrudController
             'wrapper' => ['class' => 'form-group col-md-6'],
         ]);
         CRUD::addColumn([
+            'name' => 'slug',
+        ]);
+        CRUD::addColumn([
             'name'        => 'category_id',
             'label'       => 'Kateqoriya',
             'type'        => 'select2',
@@ -82,7 +85,13 @@ class ProductsCrudController extends CrudController
     {
         CRUD::setValidation(ProductsRequest::class);
         CRUD::field('name')->label('Ad')->wrapper(['class' => 'form-group col-md-4']);
-        CRUD::field('short_description')->label('Qısa mətn')->type('textarea')->wrapper(['class' => 'form-group col-md-8']);
+        CRUD::field('short_description')->label('Qısa mətn')->type('textarea')->wrapper(['class' => 'form-group col-md-5']);
+        CRUD::addField([
+            'name' => 'slug',
+            'type' => 'text',
+            'hint' => trans('backpack::pagemanager.page_slug_hint'),
+            'wrapper' => ['class' => 'form-group col-md-3'],
+        ]);
         CRUD::field('description')->label('Mətn')->type('tinymce');
         CRUD::addField([
             'name' => 'image',
