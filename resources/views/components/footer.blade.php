@@ -7,11 +7,11 @@
                     <div class="widget  widget-contact-us" style="background-image: url({{ asset('assets/images/world-map-dark.png') }}); background-position: 50% 20px; background-repeat: no-repeat">
                         <h4>Şİrkətlə əlaqə</h4>
                         <ul class="list-icon">
-                            <li><i class="fa fa-map-marker-alt"></i> {{ $siteSettings->address }}</li>
-                            <li><i class="fa fa-phone"></i> {{ $siteSettings->phone }} </li>
-                            <li><i class="far fa-envelope"></i> <a href="mailto:{{ $siteSettings->email }}">{{ $siteSettings->email }}</a> </li>
+                            <li><i class="fa fa-map-marker-alt"></i> <b>Ünvan:</b> <a target="_blank" href="https://maps.app.goo.gl/xX36pLkVS9sgY8g97">{{ $siteSettings->address }}</a></li>
+                            <li><i class="fa fa-phone"></i> <b>Telefon:</b> <a href="tel:{{ $siteSettings->phone }}">{{ $siteSettings->phone }}</a> </li>
+                            <li><i class="far fa-envelope"></i> <b>Email:</b> <a href="mailto:{{ $siteSettings->email }}">{{ $siteSettings->email }}</a> </li>
                             <li> <br>
-                                <i class="far fa-clock"></i>{{ $siteSettings->work_hours }} </li>
+                                <i class="far fa-clock"></i> <b>İş saatları:</b> {{ $siteSettings->work_hours }} </li>
                         </ul>
                     </div>
                     <!-- end: Footer widget area 1 -->
@@ -21,10 +21,26 @@
                     <!-- Footer widget area 1 -->
                     <div class="widget">
                         <h4>Məhsullar</h4>
+                        @php
+                            $products = \App\Models\Products::limit(5)->get();
+                            $totalCount = \App\Models\Products::count();
+                        @endphp
                         <ul class="list">
-                            @foreach(\App\Models\Products::all() as $product)
-                                <li><a href="{{ route('product', ['id' => $product->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $product->name }}</a></li>
+                            @foreach($products as $product)
+                                <li>
+                                    <a href="{{ route('product', ['id' => $product->id, 'locale' => app()->getLocale()]) }}">
+                                        {{ $product->name }}
+                                    </a>
+                                </li>
                             @endforeach
+
+                            @if($totalCount > 5)
+                                <li>
+                                    <a href="{{ route('products') }}">
+                                        <strong>Bütün məhsullar</strong>
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                     <!-- end: Footer widget area 1 -->
@@ -100,7 +116,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="copyright-text text-end">&copy; {{ date('Y') }} <a href="https://rast.group/" target="_blank">Megatron.</a> Bütün hüquqları qorunur.</div>
+                    <div class="copyright-text text-end">&copy; {{ date('Y') }} <a href="https://rast.group/" target="_blank">Metatron.</a> Bütün hüquqları qorunur.</div>
                 </div>
             </div>
         </div>

@@ -69,7 +69,7 @@ class SettingsCrudController extends CrudController
             'name'        => 'social_network',
             'label'       => 'Sosial şəbəkə',
             'type'        => 'select2_from_array',
-            'options'     => ['facebook' => 'Facebook', 'instagram' => 'Instagram', 'youtube' => 'YouTube'],
+            'options'     => ['facebook' => 'Facebook', 'instagram' => 'Instagram', 'youtube' => 'YouTube', 'linkedin' => 'Linkedin', 'tiktok' => 'Tiktok'],
             'allows_null' => false,
             'default'     => 'one',
             'wrapper'     => [

@@ -33,7 +33,7 @@ class MainController extends Controller
     public function dashboard(Request $request)
     {
         $sliders = Sliders::all();
-        $aboutUs = Page::where('slug','about-us')->first();
+        $aboutUs = Page::where('template','about_us')->first();
         $products = Products::all();
         $clients = Client::all();
         $blogs = Blog::orderBy('id','DESC')->limit(3)->get();

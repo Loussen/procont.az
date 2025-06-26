@@ -59,7 +59,7 @@
                         <div class="col-lg-6">
                             <address>
                                 <strong>Ünvan:</strong>
-                                {{ $siteSettings->address }}
+                                <a target="_blank" href="https://maps.app.goo.gl/xX36pLkVS9sgY8g97"> {{ $siteSettings->address }}</a>
                                 <br />
                                 <strong>İş saatları:</strong>
                                 {{ $siteSettings->work_hours }}
@@ -68,9 +68,9 @@
                         <div class="col-lg-6">
                             <address>
                                 <strong>Telefon:</strong>
-                                {{ $siteSettings->phone }}<br>
+                                <a href="tel:{{ $siteSettings->phone }}"> {{ $siteSettings->phone }}</a><br>
                                 <strong>Email:</strong>
-                                {{ $siteSettings->email }}<br>
+                                <a href="email:{{ $siteSettings->email }}">{{ $siteSettings->email }}</a><br>
                             </address>
                         </div>
                     </div>
