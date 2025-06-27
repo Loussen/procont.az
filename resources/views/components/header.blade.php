@@ -57,7 +57,7 @@
                     <nav>
                         <ul>
                             @foreach (\App\Models\MenuItem::getTree() as $item)
-                                <li class="{{ in_array($item->link,['products','blogs']) ? 'dropdown' : '' }}">
+                                <li class="{{ in_array($item->link,['products']) ? 'dropdown' : '' }}">
                                     @php
                                         if($item->type == 'internal_link') {
                                             $link = route($item->link, ['locale' => \Illuminate\Support\Facades\App::getLocale()]);
@@ -72,12 +72,6 @@
                                         <ul class="dropdown-menu">
                                             @foreach(\App\Models\Products::all() as $product)
                                                 <li><a href="{{ route('product', ['slug' => $product->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $product->name }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    @elseif($item->link == 'blogs')
-                                        <ul class="dropdown-menu">
-                                            @foreach(\App\Models\Blog::all() as $blog)
-                                                <li><a href="{{ route('blog', ['slug' => $blog->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $blog->title }}</a></li>
                                             @endforeach
                                         </ul>
                                     @endif

@@ -70,18 +70,16 @@ class Settings extends Model
     {
         $attribute_name = 'gallery';
         $disk = 'site_gallery';
+        $watermarkPath = public_path('assets/images/logo.png');
 
-        // DB-də saxlanacaq şəkil siyahısı
         $decoded = is_string($value) ? json_decode($value, true) : $value;
         if (!is_array($decoded)) {
             $decoded = [];
         }
 
-        // Əvvəlki şəkillər (modeldə cast edilib array olacaq)
         $previous = $this->gallery ?? [];
-
-        // Silinmiş şəkilləri tap və həm original, həm thumb faylını sil
         $deleted = array_diff($previous, $decoded);
+
         foreach ($deleted as $urlPath) {
             $diskUrl = Storage::disk($disk)->url('/');
             $relative = str_replace($diskUrl, '', $urlPath);
@@ -92,10 +90,8 @@ class Settings extends Model
             Storage::disk($disk)->delete($thumb);
         }
 
-        // Yeni qiyməti yaz
         $this->attributes[$attribute_name] = json_encode($decoded);
 
-        // Yeni və qalan şəkillər üçün thumb yarat (əgər yoxdursa)
         foreach ($decoded as $urlPath) {
             $diskUrl = Storage::disk($disk)->url('/');
             $relative = str_replace($diskUrl, '', $urlPath);
@@ -106,15 +102,46 @@ class Settings extends Model
                 continue;
             }
 
+            $originalImage = Image::make($absolute);
+            $originalForThumb = clone $originalImage;
+
+            if (file_exists($watermarkPath)) {
+                $originalWidth = $originalImage->width();
+
+                $watermarkWidth = intval($originalWidth * 0.3);
+
+                $watermark = Image::make($watermarkPath)
+                    ->resize($watermarkWidth, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    })
+                    ->opacity(70);
+
+                $originalImage->insert($watermark, 'center')->save($absolute);
+            }
+
             $info = pathinfo($relative);
             $thumbRel = $info['dirname'] . '/' . $info['filename'] . '_thumb.' . $info['extension'];
             $thumbAbs = Storage::disk($disk)->path($thumbRel);
 
             if (!Storage::disk($disk)->exists($thumbRel)) {
-                Image::make($absolute)
-                    ->fit(600, 400)
-                    ->save($thumbAbs);
+                $thumbImage = $originalForThumb->fit(600, 400);
+
+                if (file_exists($watermarkPath)) {
+                    $thumbWatermark = Image::make($watermarkPath)
+                        ->resize(600 * 0.3, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                            $constraint->upsize();
+                        })
+                        ->opacity(70);
+
+                    $thumbImage->insert($thumbWatermark, 'center');
+                }
+
+                $thumbImage->save($thumbAbs);
             }
         }
     }
+
+
 }
