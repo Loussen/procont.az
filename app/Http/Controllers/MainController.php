@@ -98,13 +98,30 @@ class MainController extends Controller
 
     public function contactForm(Request $request)
     {
+        $messages = [
+            'full_name.required' => 'Ad və soyad mütləqdir.',
+            'full_name.string'   => 'Ad və soyad mətn formatında olmalıdır.',
+            'full_name.max'      => 'Ad və soyad 255 simvoldan çox olmamalıdır.',
+
+            'email.required' => 'Email mütləqdir.',
+            'email.email'    => 'Düzgün email formatı daxil edin.',
+            'email.max'      => 'Email 255 simvoldan çox olmamalıdır.',
+
+            'subject.required' => 'Mövzu mütləqdir.',
+            'subject.string'   => 'Mövzu mətn formatında olmalıdır.',
+            'subject.max'      => 'Mövzu 255 simvoldan çox olmamalıdır.',
+
+            'message.required' => 'Mesaj mətnini daxil edin.',
+            'message.string'   => 'Mesaj mətn formatında olmalıdır.',
+        ];
+
         // Validate form data
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
             return response()->json([

@@ -72,30 +72,29 @@
 
 
                 <div class="col-lg-4">
-                    <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post">
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-                            </div>
-                            <input type="text" aria-required="true" name="widget-contact-form-name" class="form-control required name" placeholder="Enter your Name">
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
-                            </div>
-                            <input type="email" aria-required="true" required name="widget-contact-form-email" class="form-control required email" placeholder="Enter your Email">
-                        </div>
-                        <div class="form-group mb-2">
-                            <textarea type="text" name="widget-contact-form-message" rows="5" class="form-control required" placeholder="Enter your Message"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>
-                        </div>
-                    </form>
+{{--                    <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post">--}}
+{{--                        <div class="input-group mb-2">--}}
+{{--                            <div class="input-group-prepend">--}}
+{{--                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>--}}
+{{--                            </div>--}}
+{{--                            <input type="text" aria-required="true" name="widget-contact-form-name" class="form-control required name" placeholder="Enter your Name">--}}
+{{--                        </div>--}}
+{{--                        <div class="input-group mb-2">--}}
+{{--                            <div class="input-group-prepend">--}}
+{{--                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>--}}
+{{--                            </div>--}}
+{{--                            <input type="email" aria-required="true" required name="widget-contact-form-email" class="form-control required email" placeholder="Enter your Email">--}}
+{{--                        </div>--}}
+{{--                        <div class="form-group mb-2">--}}
+{{--                            <textarea type="text" name="widget-contact-form-message" rows="5" class="form-control required" placeholder="Enter your Message"></textarea>--}}
+{{--                        </div>--}}
+{{--                        <div class="form-group">--}}
+{{--                            <button class="btn btn-primary" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
 
+                    <iframe style="border:0; width: 100%; height: 250px;" src="{{ $siteSettings->map }}" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-
-
             </div>
         </div>
     </div>
