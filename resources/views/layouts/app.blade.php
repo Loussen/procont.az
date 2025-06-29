@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png') }}" href="{{ asset('assets/images/favicon.png') }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
-    <title>POLO | The Multi-Purpose HTML5 Template</title>
+    <title>Procont @hasSection('title') - @yield('title') @endif</title>
     <!-- Stylesheets & Fonts -->
     <link href="{{ asset('assets/css/plugins.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">

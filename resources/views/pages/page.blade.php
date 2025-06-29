@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to Clinics - Your Health is Our Priority')
+@section('title', $page->title)
 
 @section('content')
     <!-- Inspiro Slider -->

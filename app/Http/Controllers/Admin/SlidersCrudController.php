@@ -19,6 +19,7 @@ class SlidersCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -31,6 +32,22 @@ class SlidersCrudController extends CrudController
         CRUD::setModel(\App\Models\Sliders::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/sliders');
         CRUD::setEntityNameStrings('slayder', 'slayderlər');
+
+        if (!backpack_user()->can('slayderler siyahi')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+
+        if (!backpack_user()->can('slayderler elave etmek')) {
+            CRUD::denyAccess(['create']);
+        }
+
+        if (!backpack_user()->can('slayderler duzelish etmek')) {
+            CRUD::denyAccess(['update']);
+        }
+
+        if (!backpack_user()->can('slayderler silmek')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**
@@ -41,6 +58,9 @@ class SlidersCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->orderBy('lft');
+        $this->crud->orderBy('id');
+
         CRUD::column('title')->label('Başlıq')->wrapper(['class' => 'form-group col-md-6']);
         CRUD::column('url')->wrapper(['class' => 'form-group col-md-6']);
         CRUD::column('description')->label('Mətn');
@@ -100,5 +120,11 @@ class SlidersCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupReorderOperation()
+    {
+        $this->crud->set('reorder.label', 'title');
+        $this->crud->set('reorder.max_level', 1);
     }
 }

@@ -20,6 +20,7 @@ class ProductsCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     use DropzoneOperation;
 
@@ -34,6 +35,22 @@ class ProductsCrudController extends CrudController
         CRUD::setModel(\App\Models\Products::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/products');
         CRUD::setEntityNameStrings('məhsul', 'məhsullar');
+
+        if (!backpack_user()->can('mehsullar siyahi')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+
+        if (!backpack_user()->can('mehsullar elave etmek')) {
+            CRUD::denyAccess(['create']);
+        }
+
+        if (!backpack_user()->can('mehsullar duzelish etmek')) {
+            CRUD::denyAccess(['update']);
+        }
+
+        if (!backpack_user()->can('mehsullar silmek')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**
@@ -44,6 +61,9 @@ class ProductsCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->orderBy('lft');
+        $this->crud->orderBy('id');
+
         CRUD::column('name')->label('Ad');
         CRUD::column('short_description')->label('Qısa mətn');
         CRUD::addColumn([
@@ -161,5 +181,11 @@ class ProductsCrudController extends CrudController
             'withFiles'    => true,
         ]);
         CRUD::column('map')->type('textarea');
+    }
+
+    protected function setupReorderOperation()
+    {
+        $this->crud->set('reorder.label', 'name');
+        $this->crud->set('reorder.max_level', 1);
     }
 }

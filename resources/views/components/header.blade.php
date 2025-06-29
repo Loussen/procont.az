@@ -70,8 +70,17 @@
                                     <a href="{{ $link }}">{{ $item->name }}</a>
                                     @if($item->link == 'products')
                                         <ul class="dropdown-menu">
-                                            @foreach(\App\Models\Products::all() as $product)
-                                                <li><a href="{{ route('product', ['slug' => $product->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $product->name }}</a></li>
+                                            @foreach(\App\Models\Category::where('type','product')->get() as $category)
+                                                <li class="dropdown-submenu">
+                                                    <a href="{{ route('products', ['category_id' => $category->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $category->name }}</a>
+                                                    <ul class="dropdown-menu">
+                                                        @foreach($category->products as $product)
+                                                            <li>
+                                                                <a href="{{ route('product', ['slug' => $product->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $product->name }}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     @endif

@@ -34,7 +34,7 @@ return [
     'change_password'        => 'Parolu dəyişdir',
     'unauthorized'           => 'Yetkisiz.',
     'dashboard'              => 'İdarə Paneli',
-    'handcrafted_by'         => 'Əl ilə hazırlanmışdır',
+    'handcrafted_by'         => '',
     'powered_by'             => 'Tərəfindən təchiz edilmişdir',
     'my_account'             => 'Mənim Hesabım',
     'update_account_info'    => 'Hesab məlumatlarını yenilə',

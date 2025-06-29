@@ -19,6 +19,7 @@ class CategoryCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -31,6 +32,22 @@ class CategoryCrudController extends CrudController
         CRUD::setModel(\App\Models\Category::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/category');
         CRUD::setEntityNameStrings('kateqoriya', 'kateqoriyalar');
+
+        if (!backpack_user()->can('kateqoriyalar siyahi')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+
+        if (!backpack_user()->can('kateqoriyalar elave etmek')) {
+            CRUD::denyAccess(['create']);
+        }
+
+        if (!backpack_user()->can('kateqoriyalar duzelish etmek')) {
+            CRUD::denyAccess(['update']);
+        }
+
+        if (!backpack_user()->can('kateqoriyalar silmek')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**
@@ -41,6 +58,9 @@ class CategoryCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->orderBy('lft');
+        $this->crud->orderBy('id');
+
         CRUD::column('name')->label('Başlıq');
         CRUD::addColumn([
             'name' => 'type',
@@ -89,5 +109,11 @@ class CategoryCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupReorderOperation()
+    {
+        $this->crud->set('reorder.label', 'name');
+        $this->crud->set('reorder.max_level', 1);
     }
 }

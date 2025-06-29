@@ -10,6 +10,7 @@ use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use App\Http\Requests\PageRequest;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
@@ -29,6 +30,22 @@ class PageCrudController extends CrudController
         $this->crud->setModel(Page::class);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
         $this->crud->setEntityNameStrings('səhifə', 'səhifələr');
+
+        if (!backpack_user()->can('sehifeler siyahi')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+
+        if (!backpack_user()->can('sehifeler elave etmek')) {
+            CRUD::denyAccess(['create']);
+        }
+
+        if (!backpack_user()->can('sehifeler duzelish etmek')) {
+            CRUD::denyAccess(['update']);
+        }
+
+        if (!backpack_user()->can('sehifeler silmek')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     protected function setupListOperation()

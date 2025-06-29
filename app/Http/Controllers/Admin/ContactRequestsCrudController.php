@@ -29,6 +29,22 @@ class ContactRequestsCrudController extends CrudController
         CRUD::setModel(\App\Models\ContactRequests::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-requests');
         CRUD::setEntityNameStrings('əlaqə mesajları', 'əlaqə mesajları');
+
+        if (!backpack_user()->can('elaqe mesajlar siyahi')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+
+        if (!backpack_user()->can('elaqe mesajlar elave etmek')) {
+            CRUD::denyAccess(['create']);
+        }
+
+        if (!backpack_user()->can('elaqe mesajlar duzelish etmek')) {
+            CRUD::denyAccess(['update']);
+        }
+
+        if (!backpack_user()->can('elaqe mesajlar silmek')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**

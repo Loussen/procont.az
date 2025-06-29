@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to Clinics - Your Health is Our Priority')
+@section('title', 'Qalereya')
 
 @section('content')
     <!-- Inspiro Slider -->
@@ -26,7 +26,7 @@
             <!-- Gallery -->
             <div class="grid-layout grid-5-columns" data-margin="20" data-item="grid-item" data-lightbox="gallery">
                 @php
-                    $gallery = $siteSettings->gallery;
+                    $gallery = $gallery->images;
                 @endphp
                 @foreach($gallery as $galleryItem)
                     @php

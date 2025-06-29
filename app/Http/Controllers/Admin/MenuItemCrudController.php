@@ -23,7 +23,26 @@ class MenuItemCrudController extends CrudController
         $this->crud->setRoute(config('backpack.base.route_prefix').'/menu-item');
         $this->crud->setEntityNameStrings('menyu', 'menyular');
 
+        if (!backpack_user()->can('menyular siyahi')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+
+        if (!backpack_user()->can('menyular elave etmek')) {
+            CRUD::denyAccess(['create']);
+        }
+
+        if (!backpack_user()->can('menyular duzelish etmek')) {
+            CRUD::denyAccess(['update']);
+        }
+
+        if (!backpack_user()->can('menyular silmek')) {
+            CRUD::denyAccess(['delete']);
+        }
+
         $this->crud->enableReorder('name', 3);
+
+        $this->crud->orderBy('lft');
+        $this->crud->orderBy('id');
 
         $this->crud->operation('list', function () {
             $this->crud->addColumn([

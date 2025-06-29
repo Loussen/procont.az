@@ -11,6 +11,7 @@ use App\Models\Doctors;
 use App\Models\Faqs;
 use App\Models\Features;
 use App\Models\MenuItem;
+use App\Models\PhotoGallery;
 use App\Models\Products;
 use App\Models\Page;
 use App\Models\Services;
@@ -33,13 +34,14 @@ class MainController extends Controller
      */
     public function dashboard(Request $request)
     {
-        $sliders = Sliders::all();
+        $sliders = Sliders::orderBy('lft','ASC')->get();
         $aboutUs = Page::where('template','about_us')->first();
-        $products = Products::all();
+        $products = Products::orderBy('lft','ASC')->get();
         $clients = Client::all();
-        $blogs = Blog::orderBy('id','DESC')->limit(3)->get();
+        $blogs = Blog::orderBy('lft','ASC')->limit(3)->get();
+        $gallery = PhotoGallery::first();
 
-        return view('pages.home',['sliders' => $sliders, 'aboutUs' => $aboutUs, 'products' => $products, 'clients' => $clients, 'blogs' => $blogs]);
+        return view('pages.home',['sliders' => $sliders, 'aboutUs' => $aboutUs, 'products' => $products, 'clients' => $clients, 'blogs' => $blogs, 'gallery' => $gallery]);
     }
 
     public function page($locale = null, $slug = null)
@@ -59,14 +61,18 @@ class MainController extends Controller
         return view('pages.page', ['page' => $page, 'getMenu' => $getMenu]);
     }
 
-    public function products()
+    public function products($locale = null, $category_id = null)
     {
-        $categories = Category::where('type','product')->get();
         $products = Products::all();
+        if($category_id > 0) {
+            $products = Products::where('category_id',$category_id)->orderBy('lft','ASC')->get();
+        }
+
+        $categories = Category::where('type','product')->orderBy('lft','ASC')->get();
 
         $getMenu = MenuItem::where('link','products')->where('type','internal_link')->first();
 
-        return view('pages.products',['categories' => $categories, 'products' => $products, 'getMenu' => $getMenu]);
+        return view('pages.products',['categories' => $categories, 'products' => $products, 'getMenu' => $getMenu, 'categoryId' => $category_id]);
     }
 
     public function product($locale = null, $slug)
@@ -156,12 +162,14 @@ class MainController extends Controller
     {
         $getMenu = MenuItem::where('link','photo-gallery')->where('type','internal_link')->first();
 
-        return view('pages.photo-gallery',['getMenu' => $getMenu]);
+        $gallery = PhotoGallery::first();
+
+        return view('pages.photo-gallery',['getMenu' => $getMenu, 'gallery' => $gallery]);
     }
 
     public function blogs()
     {
-        $blogs = Blog::paginate(8);
+        $blogs = Blog::orderBy('lft','ASC')->paginate(8);
         $getMenu = MenuItem::where('link','blogs')->where('type','internal_link')->first();
         return view('pages.blogs', compact('blogs','getMenu'));
     }

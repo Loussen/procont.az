@@ -31,6 +31,22 @@ class FaqsCrudController extends CrudController
         CRUD::setModel(\App\Models\Faqs::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/faqs');
         CRUD::setEntityNameStrings('sual-cavab', 'sual-cavablar');
+
+        if (!backpack_user()->can('sual-cavablar siyahi')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+
+        if (!backpack_user()->can('sual-cavablar elave etmek')) {
+            CRUD::denyAccess(['create']);
+        }
+
+        if (!backpack_user()->can('sual-cavablar duzelish etmek')) {
+            CRUD::denyAccess(['update']);
+        }
+
+        if (!backpack_user()->can('sual-cavablar silmek')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**

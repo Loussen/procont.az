@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to Clinics - Your Health is Our Priority')
+@section('title', 'Məhsullar')
 
 @section('content')
     <!-- Inspiro Slider -->
@@ -25,11 +25,11 @@
     <div class="page-menu menu-rounded">
         <div class="container">
             <!-- Portfolio Filter -->
-            <nav class="grid-filter no-margin" data-layout="#portfolio">
+            <nav class="no-margin" data-layout="#portfolio" id="portfolio">
                 <ul>
-                    <li class="active"><a href="#" data-category="*">Show All</a></li>
+                    <li class="{{ $categoryId == null || $categoryId == 0 ? 'active' : '' }}"><a href="{{ route('products', ['locale' => app()->getLocale()]) . '#portfolio' }}" data-category="*">Hamısını gör</a></li>
                     @foreach($categories as $category)
-                        <li><a href="#" data-category=".ct-{{ mb_strtolower($category->name,'UTF-8') }}">{{ $category->name }}</a></li>
+                        <li class="{{ $categoryId > 0 && $categoryId == $category->id ? 'active' : '' }}"><a href="{{ route('products', ['locale' => app()->getLocale(), 'category_id' => $category->id]) . '#portfolio' }}" data-category=".ct-{{ mb_strtolower($category->name,'UTF-8') }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
             </nav>

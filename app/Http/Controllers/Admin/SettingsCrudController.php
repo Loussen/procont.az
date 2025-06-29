@@ -34,6 +34,22 @@ class SettingsCrudController extends CrudController
         CRUD::setModel(\App\Models\Settings::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/settings');
         CRUD::setEntityNameStrings('ayarlar', 'ayarlar');
+
+        if (!backpack_user()->can('ayarlar siyahi')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+
+        if (!backpack_user()->can('ayarlar elave etmek')) {
+            CRUD::denyAccess(['create']);
+        }
+
+        if (!backpack_user()->can('ayarlar duzelish etmek')) {
+            CRUD::denyAccess(['update']);
+        }
+
+        if (!backpack_user()->can('ayarlar silmek')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**

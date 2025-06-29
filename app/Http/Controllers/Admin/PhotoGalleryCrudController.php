@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ClientRequest;
+use App\Http\Requests\PhotoGalleryRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Illuminate\Support\Facades\App;
+use Backpack\Pro\Http\Controllers\Operations\DropzoneOperation;
 
 /**
- * Class ClientCrudController
+ * Class PhotoGalleryCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ClientCrudController extends CrudController
+class PhotoGalleryCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+
+    use DropzoneOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -27,26 +29,9 @@ class ClientCrudController extends CrudController
      */
     public function setup()
     {
-        App::setLocale('az');
-        CRUD::setModel(\App\Models\Client::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/client');
-        CRUD::setEntityNameStrings('müştəri', 'müştərilərimiz');
-
-        if (!backpack_user()->can('mushteriler siyahi')) {
-            CRUD::denyAccess(['list', 'show']);
-        }
-
-        if (!backpack_user()->can('mushteriler elave etmek')) {
-            CRUD::denyAccess(['create']);
-        }
-
-        if (!backpack_user()->can('mushteriler duzelish etmek')) {
-            CRUD::denyAccess(['update']);
-        }
-
-        if (!backpack_user()->can('mushteriler silmek')) {
-            CRUD::denyAccess(['delete']);
-        }
+        CRUD::setModel(\App\Models\PhotoGallery::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/photo-gallery');
+        CRUD::setEntityNameStrings('photo gallery', 'photo galleries');
     }
 
     /**
@@ -57,17 +42,7 @@ class ClientCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name')->label('Ad');
-        CRUD::column('link')->label('Link');
-        CRUD::addColumn([
-            'name' => 'image',
-            'label' => 'Şəkil',
-            'type' => 'image',
-            'upload' => true,
-            'prefix' => 'storage/',
-            'crop' => true,
-            'wrapper' => ['class' => 'form-group col-md-6'],
-        ]);
+//        CRUD::setFromDb(); // set columns from db columns.
 
         /**
          * Columns can be defined using the fluent syntax:
@@ -83,17 +58,14 @@ class ClientCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ClientRequest::class);
-        CRUD::field('name')->label('Ad')->wrapper(['class' => 'form-group col-md-4']);
-        CRUD::field('link')->label('Link')->wrapper(['class' => 'form-group col-md-4']);
+        CRUD::setValidation(PhotoGalleryRequest::class);
         CRUD::addField([
-            'name' => 'image',
-            'type' => 'image',
-            'label' => 'Şəkil',
-            'upload' => true,
-            'crop' => true,
-            'wrapper' => ['class' => 'form-group col-md-4'],
-            'hint' => '138x46'
+            'name' => 'images',
+            'label'       => 'Qalereya',
+            'type' => 'dropzone',
+            'disk' => 'site_gallery',
+            'withFiles'    => true,
+            'hint' => '600x400'
         ]);
 
         /**

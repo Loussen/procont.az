@@ -12,6 +12,7 @@
         "backpack/language-switcher": "^2.0",
         "backpack/menucrud": "^4.0",
         "backpack/pagemanager": "^3.3",
+        "backpack/permissionmanager": "^7.2",
         "backpack/pro": "^2.2",
         "backpack/theme-tabler": "^1.2",
         "intervention/image": "^2",

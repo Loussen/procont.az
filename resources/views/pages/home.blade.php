@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to Clinics - Your Health is Our Priority')
+@section('title', 'Procont')
 
 @section('content')
 
@@ -78,7 +78,7 @@
                 @foreach($numbers as $number)
                     <div class="col-lg-3">
                         <div class="text-center">
-                            <div class="counter text-lg"> <span data-speed="3000" data-refresh-interval="50" data-to="{{ $number['number'] }}" data-from="0" data-seperator="true"></span> </div>
+                            <div class="counter text-lg"> <span data-speed="3000" data-refresh-interval="50" data-to="{{ $number['number'] }}" data-from="0" data-seperator="true"></span><plus style="font-size: 50px;">+</plus> </div>
                             <div class="seperator seperator-small"></div>
                             <p>{{ $number['title'] }}</p>
                         </div>
@@ -132,7 +132,7 @@
         <!-- Portfolio -->
         <div id="portfolio" class="grid-layout portfolio-4-columns" data-margin="0" data-lightbox="gallery">
             @php
-                $gallery = $siteSettings->gallery;
+                $gallery = $gallery->images;
             @endphp
             @foreach($gallery as $galleryItem)
                 @php

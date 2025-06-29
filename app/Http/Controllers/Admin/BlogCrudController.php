@@ -19,6 +19,7 @@ class BlogCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -31,6 +32,22 @@ class BlogCrudController extends CrudController
         CRUD::setModel(\App\Models\Blog::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/blog');
         CRUD::setEntityNameStrings('xəbər', 'xəbərlər');
+
+        if (!backpack_user()->can('xeberler siyahi')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+
+        if (!backpack_user()->can('xeberler elave etmek')) {
+            CRUD::denyAccess(['create']);
+        }
+
+        if (!backpack_user()->can('xeberler duzelish etmek')) {
+            CRUD::denyAccess(['update']);
+        }
+
+        if (!backpack_user()->can('xeberler silmek')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**
@@ -41,6 +58,9 @@ class BlogCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->orderBy('lft');
+        $this->crud->orderBy('id');
+
         CRUD::column('title')->label('Başlıq');
         CRUD::column('short_description')->label('Qısa mətn');
         CRUD::addColumn([
@@ -127,5 +147,11 @@ class BlogCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupReorderOperation()
+    {
+        $this->crud->set('reorder.label', 'title');
+        $this->crud->set('reorder.max_level', 1);
     }
 }

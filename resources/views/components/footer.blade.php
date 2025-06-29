@@ -22,14 +22,14 @@
                     <div class="widget">
                         <h4>Məhsullar</h4>
                         @php
-                            $products = \App\Models\Products::limit(5)->get();
-                            $totalCount = \App\Models\Products::count();
+                            $categories = \App\Models\Category::where('type','product')->limit(5)->get();
+                            $totalCount = \App\Models\Category::where('type','product')->count();
                         @endphp
                         <ul class="list">
-                            @foreach($products as $product)
+                            @foreach($categories as $category)
                                 <li>
-                                    <a href="{{ route('product', ['slug' => $product->slug, 'locale' => app()->getLocale()]) }}">
-                                        {{ $product->name }}
+                                    <a href="{{ route('products', ['category_id' => $category->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">
+                                        {{ $category->name }}
                                     </a>
                                 </li>
                             @endforeach

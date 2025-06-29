@@ -18,7 +18,7 @@ function getRegistrar(): void
 {
     Route::controller(MainController::class)->group(function () {
         Route::get('/', 'dashboard')->name('home');
-        Route::get('/products', 'products')->name('products');
+        Route::get('/products/{category_id?}', 'products')->name('products');
         Route::get('/contact', 'contact')->name('contact');
         Route::get('/photo-gallery', 'photoGallery')->name('photo-gallery');
         Route::get('/blogs', 'blogs')->name('blogs');
