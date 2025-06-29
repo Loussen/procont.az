@@ -63,7 +63,7 @@ return [
     'home_link' => '',
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo' => '<b>Pro</b>cont',
+    'project_logo' => '<img src="https://procont.az/assets/images/logo-dark.png" width="150" />',
 
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => true,

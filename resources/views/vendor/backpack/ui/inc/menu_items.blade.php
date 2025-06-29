@@ -23,7 +23,7 @@
     <x-backpack::menu-item title="Müştərilərimiz" icon="la la-handshake" :link="backpack_url('client')" />
 @endif
 @if(backpack_user()->hasPermissionTo('foto qalereya siyahi'))
-    <x-backpack::menu-item title="Foto qalereya" icon="la la-images" :link="backpack_url('photo-gallery')" />
+    <x-backpack::menu-item title="Foto qalereya" icon="la la-images" :link="backpack_url('photo-gallery/1/edit')" />
 @endif
 @if(backpack_user()->hasPermissionTo('sual-cavablar siyahi'))
     <x-backpack::menu-item title="Sual-Cavablar" icon="la la-question-circle" :link="backpack_url('faqs')" />
