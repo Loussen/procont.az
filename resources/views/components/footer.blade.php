@@ -70,8 +70,8 @@
                 </div>
 
 
-
-                <div class="col-lg-4">
+                @if(Route::currentRouteName() != 'contact')
+                    <div class="col-lg-4">
 {{--                    <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post">--}}
 {{--                        <div class="input-group mb-2">--}}
 {{--                            <div class="input-group-prepend">--}}
@@ -93,8 +93,9 @@
 {{--                        </div>--}}
 {{--                    </form>--}}
 
-                    <iframe style="border:0; width: 100%; height: 250px;" src="{{ $siteSettings->map }}" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                        <iframe style="border:0; width: 100%; height: 250px;" src="{{ $siteSettings->map }}" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -102,7 +103,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <!-- Social icons -->
                     <div class="social-icons social-icons-colored float-left">
                         <ul>
@@ -114,8 +115,12 @@
                     <!-- end: Social icons -->
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="copyright-text text-end">&copy; {{ date('Y') }} <a href="https://rast.group/" target="_blank">Metatron.</a> Bütün hüquqları qorunur.</div>
+                <div class="col-lg-4">
+                    <div class="copyright-text text-center"><u><a href="https://rast.group/" target="_blank">Metatron</a></u> tərəfindən hazırlanmışdır</div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="copyright-text text-end">&copy; {{ date('Y') }} Skyglass. Bütün hüquqları qorunur.</div>
                 </div>
             </div>
         </div>

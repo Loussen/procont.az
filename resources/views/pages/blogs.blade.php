@@ -24,21 +24,6 @@
     <section id="page-content">
         <div class="container">
             <!-- post content -->
-            <!-- Page title -->
-            <div class="page-title">
-                <h1>Blog Masonry - Wide</h1>
-                <div class="breadcrumb float-left">
-                    <ul>
-                        <li><a href="#">Home</a>
-                        </li>
-                        <li><a href="#">Blog</a>
-                        </li>
-                        <li class="active"><a href="#">Wide</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end: Page title -->
             <!-- Blog -->
             <!-- Blog -->
             <div id="blog" class="grid-layout post-4-columns m-b-30" data-item="post-item">

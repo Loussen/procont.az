@@ -70,11 +70,11 @@
                                     <a href="{{ $link }}">{{ $item->name }}</a>
                                     @if($item->link == 'products')
                                         <ul class="dropdown-menu">
-                                            @foreach(\App\Models\Category::where('type','product')->get() as $category)
+                                            @foreach(\App\Models\Category::where('type','product')->orderby('lft','ASC')->get() as $category)
                                                 <li class="dropdown-submenu">
                                                     <a href="{{ route('products', ['category_id' => $category->id, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $category->name }}</a>
                                                     <ul class="dropdown-menu">
-                                                        @foreach($category->products as $product)
+                                                        @foreach($category->products->sortBy('lft') as $product)
                                                             <li>
                                                                 <a href="{{ route('product', ['slug' => $product->slug, 'locale' => \Illuminate\Support\Facades\App::getLocale()]) }}">{{ $product->name }}</a>
                                                             </li>

@@ -109,7 +109,7 @@ class PhotoGallery extends Model
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
-                    ->opacity(70);
+                    ->opacity(20);
 
                 $originalImage->insert($watermark, 'center')->save($absolute);
             }
@@ -127,7 +127,7 @@ class PhotoGallery extends Model
                             $constraint->aspectRatio();
                             $constraint->upsize();
                         })
-                        ->opacity(70);
+                        ->opacity(20);
 
                     $thumbImage->insert($thumbWatermark, 'center');
                 }
