@@ -46,19 +46,33 @@
                                 <div class="portfolio-share" data-animate="fadeIn">
                                     <h4>Share this project</h4>
                                     <div class="align-center">
-                                        <a class="btn btn-slide btn-light" href="#">
+                                        @php
+                                            $url = urlencode(request()->fullUrl());
+                                            $title = urlencode($blog->title);
+                                        @endphp
+                                        <a class="btn btn-slide btn-light"
+                                           href="https://www.facebook.com/sharer/sharer.php?u={{ $url }}"
+                                           target="_blank" rel="noopener">
                                             <i class="fab fa-facebook-f"></i>
                                             <span>Facebook</span>
                                         </a>
-                                        <a class="btn btn-slide btn-light" href="#" data-width="120">
+
+                                        <a class="btn btn-slide btn-light"
+                                           href="https://twitter.com/intent/tweet?url={{ $url }}&text={{ $title }}"
+                                           target="_blank" rel="noopener">
                                             <i class="fab fa-twitter"></i>
                                             <span>Twitter</span>
                                         </a>
-                                        <a class="btn btn-slide btn-light" href="#" data-width="140">
+
+                                        <a class="btn btn-slide btn-light"
+                                           href="https://www.instagram.com/?url={{ $url }}"
+                                           target="_blank" rel="noopener">
                                             <i class="fab fa-instagram"></i>
                                             <span>Instagram</span>
                                         </a>
-                                        <a class="btn btn-slide btn-light" href="mailto:#" data-width="96">
+
+                                        <a class="btn btn-slide btn-light"
+                                           href="mailto:?subject={{ $title }}&body=Link: {{ $url }}">
                                             <i class="icon-mail"></i>
                                             <span>Mail</span>
                                         </a>
