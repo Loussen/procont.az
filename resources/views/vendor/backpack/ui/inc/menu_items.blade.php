@@ -12,6 +12,9 @@
 @if(backpack_user()->hasPermissionTo('mehsullar siyahi'))
     <x-backpack::menu-item title="Məhsullar" icon="la la-hospital" :link="backpack_url('products')" />
 @endif
+@if(backpack_user()->hasPermissionTo('layiheler siyahi'))
+    <x-backpack::menu-item title="Layihələr" icon="la la-list" :link="backpack_url('project')" />
+@endif
 {{--<x-backpack::menu-item :title="trans('backpack::crud.file_manager')" icon="la la-files-o" :link="backpack_url('elfinder')" />--}}
 @if(backpack_user()->hasPermissionTo('slayderler siyahi'))
     <x-backpack::menu-item title="Slayderlər" icon="la la-images" :link="backpack_url('sliders')" />

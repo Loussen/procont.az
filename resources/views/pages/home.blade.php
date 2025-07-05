@@ -209,3 +209,13 @@
 @push('scripts')
     <script src="{{ asset('assets/js/infinite-scroll.min.js') }}"></script>
 @endpush
+
+@push('styles')
+    <style>
+        @media (max-width: 768px) {
+            #slider h4 {
+                display: none;
+            }
+        }
+    </style>
+@endpush

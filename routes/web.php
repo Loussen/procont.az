@@ -22,9 +22,11 @@ function getRegistrar(): void
         Route::get('/contact', 'contact')->name('contact');
         Route::get('/photo-gallery', 'photoGallery')->name('photo-gallery');
         Route::get('/blogs', 'blogs')->name('blogs');
+        Route::get('/projects', 'projects')->name('projects');
 
         Route::get('/product/{slug}', 'product')->name('product');
         Route::get('/blog/{slug}', 'blog')->name('blog');
+        Route::get('/project/{slug}', 'project')->name('project');
 
         Route::get('/page/{slug?}', 'page')->name('page');
     });

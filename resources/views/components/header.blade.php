@@ -1,10 +1,10 @@
-<header id="header" data-transparent="true" class="{{ in_array(Route::currentRouteName(),['']) ? '' : 'dark' }}">
+<header id="header" data-transparent="true" class="{{ in_array(Route::currentRouteName(),['projects','project']) ? '' : 'dark' }}">
     <div class="header-inner">
         <div class="container">
             <!--Logo-->
             <div id="logo">
                 <a href="{{ route('home') }}">
-                    <span class="logo-default"><img src="{{ asset('assets/images/logo.png') }}" width="200"  alt=""/></span>
+                    <span class="logo-default"><img src="{{ asset('assets/images/logo'.(in_array(Route::currentRouteName(),['projects','project']) ? '-dark' : '').'.png') }}" width="200"  alt="Skyglass"/></span>
                     <span class="logo-dark"><img src="{{ asset('assets/images/logo.png') }}" width="200"  alt=""/></span>
                 </a>
             </div>
@@ -33,7 +33,7 @@
                                             $params = ['locale' => $locale];
 
                                             // Əgər route `page`-dirsə, `slug`-u əlavə edirik
-                                            if (in_array(\Illuminate\Support\Facades\Route::currentRouteName(),['page','blog','product'])) {
+                                            if (in_array(\Illuminate\Support\Facades\Route::currentRouteName(),['page','blog','product','project'])) {
                                                 $params['slug'] = request()->route('slug');
                                             } else {
                                                 $params['id'] = request()->route('id');

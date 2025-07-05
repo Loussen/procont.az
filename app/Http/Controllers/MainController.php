@@ -14,6 +14,7 @@ use App\Models\MenuItem;
 use App\Models\PhotoGallery;
 use App\Models\Products;
 use App\Models\Page;
+use App\Models\Project;
 use App\Models\Services;
 use App\Models\Settings;
 use App\Models\Sliders;
@@ -193,5 +194,33 @@ class MainController extends Controller
         $getMenu = MenuItem::where('link','blogs')->where('type','internal_link')->first();
 
         return view('pages.blog', compact('blog','prevBlog','nextBlog','getMenu'));
+    }
+
+    public function projects()
+    {
+        $projects = Project::orderBy('lft','ASC')->paginate(8);
+        $getMenu = MenuItem::where('link','projects')->where('type','internal_link')->first();
+        return view('pages.projects', compact('projects','getMenu'));
+    }
+
+    public function project($locale = null, $slug)
+    {
+        $project = Project::where('slug',$slug)->first();
+
+        if(!$project) {
+            abort(404);
+        }
+
+        $prevProject = Project::where('id', '<', $project->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $nextProject = Project::where('id', '>', $project->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        $getMenu = MenuItem::where('link','projects')->where('type','internal_link')->first();
+
+        return view('pages.project', compact('project','prevProject','nextProject','getMenu'));
     }
 }
