@@ -90,4 +90,16 @@ class ContactRequestsCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+
+    protected function autoSetupShowOperation()
+    {
+        $this->setupListOperation();
+
+        $contactRequest = $this->crud->getCurrentEntry();
+
+        if ($contactRequest && is_null($contactRequest->read_at)) {
+            $contactRequest->read_at = now();
+            $contactRequest->save();
+        }
+    }
 }

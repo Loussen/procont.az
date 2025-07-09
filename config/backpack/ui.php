@@ -46,7 +46,7 @@ return [
     // ----
 
     // Project name - shown in the window title
-    'project_name' => 'Procont Admin Panel',
+    'project_name' => 'Skyglass Admin Panel',
 
     // Content of the HTML meta robots tag to prevent indexing and link following
     'meta_robots_content' => 'noindex, nofollow',
@@ -63,8 +63,17 @@ return [
     'home_link' => '',
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo' => '<img src="https://procont.az/assets/images/logo-dark.png" width="150" />',
-
+    'project_logo' => '
+    <img 
+        src="https://skyglass.az/assets/images/logo-dark.png" 
+        width="150" 
+        class="logo-light-admin"
+    >
+    <img 
+        src="https://skyglass.az/assets/images/logo.png" 
+        width="150" 
+        class="logo-dark-admin"
+    >',
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => true,
 
@@ -73,7 +82,7 @@ return [
     // ------
 
     // Developer or company name. Shown in footer.
-    'developer_name' => 'Metatron',
+    'developer_name' => '"Metatron Marketing"',
 
     // Developer website. Link in footer. Type false if you want to hide it.
     'developer_link' => 'https://rast.group/',
@@ -119,6 +128,7 @@ return [
         // 'https://unpkg.com/vue@2.4.4/dist/vue.min.js',
         // 'https://unpkg.com/react@16/umd/react.production.min.js',
         // 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
+        'js/password-toggle.js'
     ],
 
     // JS files that are loaded in all pages, using Laravel's mix() helper

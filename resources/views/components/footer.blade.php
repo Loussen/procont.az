@@ -69,31 +69,41 @@
                     <!-- end: Footer widget area 2 -->
                 </div>
 
-
                 @if(Route::currentRouteName() != 'contact')
                     <div class="col-lg-4">
-{{--                    <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post">--}}
-{{--                        <div class="input-group mb-2">--}}
-{{--                            <div class="input-group-prepend">--}}
-{{--                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>--}}
-{{--                            </div>--}}
-{{--                            <input type="text" aria-required="true" name="widget-contact-form-name" class="form-control required name" placeholder="Enter your Name">--}}
-{{--                        </div>--}}
-{{--                        <div class="input-group mb-2">--}}
-{{--                            <div class="input-group-prepend">--}}
-{{--                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>--}}
-{{--                            </div>--}}
-{{--                            <input type="email" aria-required="true" required name="widget-contact-form-email" class="form-control required email" placeholder="Enter your Email">--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group mb-2">--}}
-{{--                            <textarea type="text" name="widget-contact-form-message" rows="5" class="form-control required" placeholder="Enter your Message"></textarea>--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group">--}}
-{{--                            <button class="btn btn-primary" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>--}}
-{{--                        </div>--}}
-{{--                    </form>--}}
-
                         <iframe style="border:0; width: 100%; height: 250px;" src="{{ $siteSettings->map }}" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                @else
+                    <div class="col-lg-4">
+                            <!-- Mini gallery-->
+                            <div class="widget widget-gallery">
+                                <h4>Mini qalereya</h4>
+                                <div data-lightbox="gallery">
+                                    @php
+                                        $gallery = \App\Models\PhotoGallery::first();
+                                        $gallery = $gallery->images;
+                                    @endphp
+                                    @foreach($gallery as $index => $galleryItem)
+                                        @if($index >= 9)
+                                            @break
+                                        @endif
+
+                                        @php
+                                            $info = pathinfo($galleryItem);
+                                            $thumbPath = "{$info['dirname']}/{$info['filename']}_thumb.{$info['extension']}";
+                                        @endphp
+
+                                        <a href="{{ Storage::disk('site_gallery')->url($galleryItem) }}" data-lightbox="gallery-image">
+                                            <img
+                                                    alt="image"
+                                                    src="{{ Storage::disk('site_gallery')->url($thumbPath) }}"
+                                                    class="img-fluid"
+                                            >
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <!-- end: mini gallery -->
                     </div>
                 @endif
             </div>
@@ -116,7 +126,7 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="copyright-text text-center"><u><a href="https://rast.group/" target="_blank">Metatron</a></u> tərəfindən hazırlanmışdır</div>
+                    <div class="copyright-text text-center"><u><a href="https://rast.group/" target="_blank">"Metatron Marketing"</a></u> tərəfindən hazırlanmışdır</div>
                 </div>
 
                 <div class="col-lg-4">

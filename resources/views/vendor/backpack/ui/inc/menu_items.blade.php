@@ -32,8 +32,17 @@
     <x-backpack::menu-item title="Sual-Cavablar" icon="la la-question-circle" :link="backpack_url('faqs')" />
 @endif
 @if(backpack_user()->hasPermissionTo('elaqe mesajlar siyahi'))
-    <x-backpack::menu-item title="Əlaqə mesajları" icon="la la-list-ul" :link="backpack_url('contact-requests')" />
+    @php
+        $newMessagesCount = \App\Models\ContactRequests::whereNull('read_at')->count();
+    @endphp
+    <x-backpack::menu-item
+            title="Əlaqə mesajları"
+            icon="la la-list-ul"
+            :link="backpack_url('contact-requests')"
+            :badge="$newMessagesCount"
+    />
 @endif
+
 @if(backpack_user()->hasPermissionTo('ayarlar siyahi'))
     <x-backpack::menu-item title="Ayarlar" icon="la la-cogs" :link="backpack_url('settings/1/edit')" />
 @endif

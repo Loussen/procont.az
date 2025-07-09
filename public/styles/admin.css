@@ -1,0 +1,10 @@
+.logo-dark-admin {
+    display: none;
+}
+
+body.theme-dark .logo-light-admin {
+    display: none;
+}
+body.theme-dark .logo-dark-admin {
+    display: inline;
+}

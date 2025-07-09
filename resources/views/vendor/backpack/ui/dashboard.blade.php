@@ -11,7 +11,7 @@
     $productCount = Products::count();
     $categoryCount = Category::count();
     $blogCount = Blog::count();
-    $contactRequestCount = ContactRequests::count();
+    $contactRequestCount = \App\Models\ContactRequests::whereNull('read_at')->count();
 
     $galleryImages = PhotoGallery::first();
     $latestBlogs = Blog::latest()->take(3)->get();
@@ -27,7 +27,12 @@
             ->ribbon(['top', 'la-first-order'])
             ->progressClass('progress-bar')
             ->value($productCount.' məhsul')
-            ->description('Məhsullar'),
+            ->description('Məhsullar')
+            ->wrapper([
+                'element' => 'div',
+                'onclick' => "window.location='".backpack_url('products')."';",
+                'style' => 'cursor: pointer;',
+            ]),
 
         Widget::make()
             ->type('progress')
@@ -37,7 +42,12 @@
             ->ribbon(['top', 'la-first-order'])
             ->progressClass('progress-bar')
             ->value($categoryCount.' kateqoriya')
-            ->description('Kateqoriyalar'),
+            ->description('Kateqoriyalar')
+            ->wrapper([
+                'element' => 'div',
+                'onclick' => "window.location='".backpack_url('category')."';",
+                'style' => 'cursor: pointer;',
+            ]),
 
         Widget::make()
             ->type('progress')
@@ -47,7 +57,12 @@
             ->ribbon(['top', 'la-first-order'])
             ->progressClass('progress-bar')
             ->value($blogCount.' xəbər')
-            ->description('Xəbərlər'),
+            ->description('Xəbərlər')
+            ->wrapper([
+                'element' => 'div',
+                'onclick' => "window.location='".backpack_url('blog')."';",
+                'style' => 'cursor: pointer;',
+            ]),
 
         Widget::make()
             ->type('progress')
@@ -56,8 +71,16 @@
             ->accentColor('primary')
             ->ribbon(['top', 'la-first-order'])
             ->progressClass('progress-bar')
-            ->value($contactRequestCount.' əlaqə mesajı')
-            ->description('Mesajlar'),
+            ->value($contactRequestCount > 0
+                ? '<span style="font-size: 20px;"><u style="color:red;">'.$contactRequestCount.'</u> ədəd yeni mesaj var</span>'
+                : '<span style="font-size: 20px;">Yeni mesaj yoxdur</span>'
+            )
+            ->description('Mesajlar')
+            ->wrapper([
+                'element' => 'div',
+                'onclick' => "window.location='".backpack_url('contact-requests')."';",
+                'style' => 'cursor: pointer;',
+            ]),
     ]);
 @endphp
 
@@ -67,7 +90,7 @@
 
     {{-- Qalereya şəkilləri --}}
     <div class="card p-3 mb-4">
-        <h5 class="mb-3">Qalereya şəkilləri</h5>
+        <h5 class="mb-3"><a class="text-decoration-underline" href="{{ backpack_url('photo-gallery',[1,'edit']) }}"> Qalereya şəkilləri</a></h5>
         <div class="row">
             @foreach($galleryImages->images as $image)
                 @php
@@ -75,7 +98,9 @@
                     $thumbPath = $info['dirname'] . '/' . $info['filename'] . '_thumb.' . $info['extension'];
                 @endphp
                 <div class="col-md-2 mb-2">
-                    <img src="{{ Storage::disk('site_gallery')->url($thumbPath) }}" class="img-fluid rounded shadow-sm" />
+                    <a href="{{ Storage::disk('site_gallery')->url($image) }}" target="_blank">
+                        <img src="{{ Storage::disk('site_gallery')->url($thumbPath) }}" class="img-fluid rounded shadow-sm" />
+                    </a>
                 </div>
             @endforeach
         </div>
@@ -83,11 +108,13 @@
 
     {{-- Son xəbərlər --}}
     <div class="card p-3 mb-4">
-        <h5 class="mb-3">Son xəbərlər</h5>
+        <h5 class="mb-3"><a class="text-decoration-underline" href="{{ backpack_url('blog') }}"> Son xəbərlər</a></h5>
         <ul class="list-group">
             @foreach($latestBlogs as $blog)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>{{ $blog->title }}</span>
+                    <a href="{{ url('/manage/blog/'.$blog->id.'/edit') }}">
+                        <span>{{ $blog->title }}</span>
+                    </a>
                     <small class="text-muted">{{ $blog->created_at->format('d.m.Y') }}</small>
                 </li>
             @endforeach
@@ -96,11 +123,13 @@
 
     {{-- Son məhsullar --}}
     <div class="card p-3 mb-4">
-        <h5 class="mb-3">Son məhsullar</h5>
+        <h5 class="mb-3"><a class="text-decoration-underline" href="{{ backpack_url('products') }}"> Son məhsullar</a></h5>
         <ul class="list-group">
             @foreach($latestProducts as $product)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>{{ $product->name }}</span>
+                    <a href="{{ url('/manage/products/'.$product->id.'/edit') }}">
+                        <span>{{ $product->name }}</span>
+                    </a>
                     <small class="text-muted">{{ $product->created_at->format('d.m.Y') }}</small>
                 </li>
             @endforeach
@@ -109,11 +138,13 @@
 
     {{-- Əlaqə mesajları --}}
     <div class="card p-3 mb-5">
-        <h5 class="mb-3">Əlaqə mesajları</h5>
+        <h5 class="mb-3"><a class="text-decoration-underline" href="{{ backpack_url('contact-requests') }}"> Əlaqə mesajları</a></h5>
         <ul class="list-group">
             @foreach($latestMessages as $msg)
                 <li class="list-group-item">
-                    <strong>{{ $msg->full_name }}:</strong> {{ Str::limit(strip_tags($msg->message), 50) }}
+                    <a href="{{ url('/manage/contact-requests/'.$msg->id.'/show') }}">
+                        <strong>{{ $msg->full_name }}:</strong> {{ Str::limit(strip_tags($msg->message), 50) }}
+                    </a>
                 </li>
             @endforeach
         </ul>
